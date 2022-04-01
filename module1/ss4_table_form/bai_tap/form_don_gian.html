@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        .all {
+            padding: 30px;
+            background: aqua;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            background: red;
+            margin: 10px;
+            color: aliceblue;
+        }
+        .form {
+            padding: 5px;
+            background-color: aliceblue;
+            /*text-align: center;*/
+            color: orange;
+        }
+        td{
+            width: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="all">
+    <form action="https://www.google.com.vn/" method="get" class="form">
+        <h1 > Sở Thích của bạn</h1>
+        <table>
+            <tr>
+                <td align="right" style="color: blue">
+                    Họ Và tên
+                </td>
+                <td colspan="2">
+                    <input type="text" placeholder="yourname" name="yourname" >
+                </td>
+            </tr>
+            <tr>
+                <td align="right" style="color: blue">
+                    Email
+                </td>
+                <td colspan="2">
+                    <input type="email" placeholder="email" name="email">
+                </td>
+            </tr>
+            <tr>
+                <td align="right" style="color: blue">
+                    Sở thích
+                </td>
+                <td>
+                    <input type="checkbox" name="hoppy"> Thể thao
+                </td>
+                <td>
+                    <input type="checkbox" name="hoppy"> Âm nhạc
+                </td>
+                <td>
+                    <input type="checkbox" name="hoppy"> Đọc sách
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="checkbox" name="hoppy"> Lướt web
+                </td>
+                <td>
+                    <input type="checkbox" name="hoppy"> Chơi game
+                </td>
+                <td>
+                    <input type="checkbox" name="hoppy"> Điện ảnh
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                <input type="checkbox" name="hoppy"> Du lịch
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Gửi thông tin">
+                </td>
+                <td>
+                    <input type="reset" value="Nhập lại">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<!--Đăng ký học viên-->
+<div style=" padding: 50px"  >
+
+</div>
+<div style="padding: 10px;background-color: darkorange">
+   <h1 style="text-align: left;padding: 10px;color:blue;background-color: lightskyblue">ĐĂNG KÝ HỌC VIÊN</h1>
+    <form action="https://www.google.com.vn/" method="get" style="margin: 10px;color: blue">
+        <table>
+            <tr>
+                <td>Họ và tên</td>
+                <td colspan="2"><input type="text"name="yourname"></td>
+            </tr>
+            <tr >
+                <td>Ngày sinh</td>
+                <td colspan="2"><input type="text"name="datebirth"></td>
+            </tr>
+            <tr>
+                <td>Giới tính</td>
+                <td style="color: black"><input type="radio"name="gt">Nam</td>
+                <td style="color: black"><input type="radio"name="gt">Nữ</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">Địa chỉ</td>
+                <td colspan="2"><textarea name="" id=""rows="8" cols="30"></textarea> </td>
+            </tr>
+            <tr>
+                <td>Lớp</td>
+                <td><select name="" id="">
+                    <option value="">--Chọn Lớp--</option>
+                    <option value="">-1-</option>
+                    <option value="">-2-</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td colspan="2"><input type="email"></td>
+            </tr>
+            <tr>
+                <td>Điện thoại</td>
+                <td colspan="2"><input type="text"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Đăng Ký"></td>
+                <td><input type="reset" value="Nhập lại"></td>
+
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
