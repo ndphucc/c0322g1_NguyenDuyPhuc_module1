@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .spacing {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="showMessage();">Click Me</button>
+    <div class="spacing"> </div>
+    <div id="messageDiv"></div>
+    <button type="button" onclick="showMessage1();">Click Me</button>
+    <div class="spacing"> </div>
+    <button type="button" onclick="showMessage2();">Click Me</button>
+    <div class="spacing"> </div>
+    <button type="button" onclick="showMessage3();">Click Me</button>
+    <script>
+        function showMessage() {
+            alert('xin chao');
+        }
+        function showMessage1() {
+            document.getElementById('messageDiv').innerText = 'xin chao'
+        }
+        function showMessage2() {
+            document.write('xin chao');
+        }
+        function showMessage3() {
+            console.log('xin chao');
+        }
+    </script>
+
+</body>
+</html>
