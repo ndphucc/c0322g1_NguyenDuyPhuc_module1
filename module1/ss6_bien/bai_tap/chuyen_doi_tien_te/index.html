@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .width-200px {
+            width: 200px;
+            text-align: center;
+
+        }
+    </style>
+
+</head>
+<body>
+    <table >
+        <tr >
+            <th>Amount</th>
+            <th class="width-200px">From Curency</th>
+            <th class="width-200px">To Currency</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><input type="number" id="ipt"></td>
+            <td class="width-200px"><select name="" id="from">
+                <option value="a">VietNam</option>
+                <option value="b">USD</option>
+            </select></td>
+            <td class="width-200px"><select name="" id="to">
+                <option value="a">VietNam</option>
+                <option value="b">USD</option>
+            </select></td>
+            <td><button onclick="cd()">convert</button></td>
+        </tr>
+    </table>
+    <div id="in"></div>
+    <script src="js.js"></script>
+</body>
+</html>
