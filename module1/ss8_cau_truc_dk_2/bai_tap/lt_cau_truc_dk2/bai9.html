@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let edgeA = parseInt(prompt('Nhập cạnh a: '));
+    let edgeB = parseInt(prompt('Nhập cạnh b: '));
+    let edgeC = parseInt(prompt('Nhập cạnh c: '));
+    let reviewA = (edgeA + edgeB) > edgeC;
+    let reviewB = (edgeB + edgeC) > edgeA;
+    let reviewC = (edgeA + edgeC) > edgeB;
+    if (reviewA && reviewB && reviewC ) {
+        alert('là 3 cạnh của tam giác');
+    } else {
+        alert('Không phải là cạnh của tam giác');
+    }
+</script>
+</body>
+</html>

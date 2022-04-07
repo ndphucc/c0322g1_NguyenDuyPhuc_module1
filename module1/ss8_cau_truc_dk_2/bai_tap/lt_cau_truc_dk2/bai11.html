@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let wage = parseInt(prompt('Nhập lương thu nhập cá nhân mỗi tháng: '))
+    if (wage > 84000000) {
+        let personalTax = (wage * 35) / 100;
+        alert('Thuế thu nhập là : ' + personalTax);
+    } else if (wage > 4000000 && wage <= 6000000) {
+        let personalTax = (wage * 5) / 100;
+        alert('Thuế thu nhập là : ' + personalTax);
+    } else if (wage > 6000000 && wage <= 9000000) {
+        let personalTax = (wage * 10) / 100;
+        alert('Thuế thu nhập là : ' + personalTax);
+    } else if (wage > 9000000 && wage <= 14000000) {
+        let personalTax = (wage * 15) / 100;
+        alert('Thuế thu nhập là : ' + personalTax);
+    } else if (wage > 14000000 && wage <= 24000000) {
+        let personalTax = (wage * 20) / 100;
+        alert('Thuế thu nhập là : ' + personalTax);
+    } else if (wage > 24000000 && wage <= 44000000) {
+        let personalTax = (wage * 25) / 100;
+        alert('Thuế thu nhập là : ' + personalTax);
+    } else if (wage > 44000000 && wage <= 84000000) {
+        let personalTax = (wage * 30) / 100;
+        alert('Thuế thu nhập là : ' + personalTax);
+    } else {
+        alert('Không có thuế');
+    }
+</script>
+</body>
+</html>

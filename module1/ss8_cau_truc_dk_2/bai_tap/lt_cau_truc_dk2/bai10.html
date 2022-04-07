@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let electricity = parseInt(prompt('Số kWh điện dùng trong 1 tháng: '));
+    if  (electricity < 50 ) {
+        let resultElec = electricity * 1448;
+        alert(resultElec);
+    } else if (electricity < 100) {
+        let resultElec = electricity * 1533;
+        alert(resultElec);
+    } else if (electricity < 200) {
+        let resultElec = electricity * 1786;
+        alert(resultElec);
+    } else {
+        let resultElec = electricity * 2242;
+        alert(resultElec);
+    }
+</script>
+</body>
+</html>

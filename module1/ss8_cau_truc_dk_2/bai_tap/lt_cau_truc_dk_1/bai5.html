@@ -5,6 +5,26 @@
     <title>Title</title>
 </head>
 <body>
- 
+<script>
+    let a=parseFloat(prompt('nhap diem tb kt '));
+    let b=parseFloat(prompt('nhap diem giua ky'));
+    let c=parseFloat(prompt('nhap diem cuoi ky'));
+    let tb=((a+b*2+c*3)/6);
+    if(tb>10) {
+        alert('điểm ko hợp lệ');
+    }
+    else if(tb>=8) {
+        alert('gioi');
+    }
+    else if(tb>=6.5) {
+        alert('kha');
+    }
+    else if(tb>=5) {
+        alert('trung binh')
+    }
+    else {
+        alert('yếu')
+    }
+</script>
 </body>
 </html>

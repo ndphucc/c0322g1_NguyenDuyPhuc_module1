@@ -5,8 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-   <button onclick="solution(5,6,1)">summit</button>
-<script src="js.js"></script>
+<script >
+    let aPt2 = parseInt(prompt('Nhập số a: '));
+    let bPt2 = parseInt(prompt('Nhập số b: '));
+    let cPt2 = parseInt(prompt('Nhập số c: '));
+    let resultPt2 = (bPt2 * bPt2) - (4 * aPt2 * cPt2);
+    if  (resultPt2 > 0) {
+        let x1 = (-bPt2 + Math.sqrt(resultPt2)) / (2 * aPt2);
+        let x2 = (-bPt2 - Math.sqrt(resultPt2)) / (2 * aPt2);
+        alert ('Phương trình có 2 ngiệm: ' + ' ' + x1 + ' , ' + x2);
+    } else if (resultPt2 == 0) {
+        let x = -bPt2 / ( 2 * aPt2);
+        alert('Phương trình có nghiệm kép: ' + x);
+    } else {
+        alert('Phương trình vô nghiệm');
+    }
+</script>
 
 </body>
 </html>
