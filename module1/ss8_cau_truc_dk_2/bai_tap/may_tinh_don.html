@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            width: 100%;
+            height: 100%;
+        }
+        table {
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            vertical-align: center;
+            mso-cellspacing: 0;
+            border-collapse: collapse;
+            border: 3px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <table cellspacing="">
+        <tr>
+            <td colspan="4" ><input type="text" id="domain" width="100px" value=""></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="set1()">1</button>
+            </td>
+            <td>
+                <button onclick="set2()">2</button>
+            </td>
+            <td>
+                <button onclick="set3()">3</button>
+            </td>
+            <td>
+                <button onclick="setadd()">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="set4()">4</button>
+            </td>
+            <td>
+                <button onclick="set5()">5</button>
+            </td>
+            <td>
+                <button onclick="set6()">6</button>
+            </td>
+            <td>
+                <button onclick="setsub()">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="set7()">7</button>
+            </td>
+            <td>
+                <button onclick="set8()">8</button>
+            </td>
+            <td>
+                <button onclick="set9()">9</button>
+            </td>
+            <td>
+                <button onclick="setmul()">*</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="setc()">C</button>
+            </td>
+            <td>
+                <button onclick="set0()">0</button>
+            </td>
+            <td>
+                <button onclick="outPut()">=</button>
+            </td>
+            <td>
+                <button onclick="setdiv()">/</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function set1(){
+            let domain = '1';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function set2(){
+            let domain = '2';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function set3(){
+            let domain = '3';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function set4(){
+            let domain = '4';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function set5(){
+            let domain = '5';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function set6(){
+            let domain = '6';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function set7(){
+            let domain = '7';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function set8(){
+            let domain = '8';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function set9(){
+            let domain = '9';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function set0(){
+            let domain = '0';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function setc(){
+            document.getElementById('domain').value= "";
+        }
+        function setadd(){
+            let domain = '+';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function setsub(){
+            let domain = '-';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function setmul(){
+            let domain = '*';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function setdiv(){
+            let domain = '/';
+            document.getElementById('domain').value= document.getElementById('domain').value+domain;
+        }
+        function outPut() {
+            let result = eval(document.getElementById('domain').value);
+            document.getElementById('domain').value=""+result;
+        }
+    </script>
+
+</body>
+</html>

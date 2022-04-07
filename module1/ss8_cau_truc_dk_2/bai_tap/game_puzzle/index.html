@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div><img id="first" src="funny-cat1_part1x1.jpg" alt="" style="width: 800px; height:150px " onclick="swap1()"></div>
+    <div><img src="funny-cat1_part2x1.jpg" alt=""></div>
+    <div><img src="funny-cat1_part3x1.jpg" alt=""></div>
+    <div><img src="funny-cat1_part4x1.jpg" alt=""></div>
+    <div><img src="funny-cat1_part5x1.jpg" alt=""></div>
+    <script>
+        function swap1() {
+            let imgObj= null;
+            imgObj = document.getElementById('first').src;
+            if (imgObj=="funny-cat1_part1x1.jpg") {
+                document.getElementById('first').src='monkey_part1x1.jpg'
+            }
+            if(document.getElementById('first').src=="monkey_part1x1.jpg") {
+                document.getElementById('first').src='funny-cat1_part1x1.jpg'
+            }
+            if(document.getElementById('first').src=="panda_swap_part1x1.jpg") {
+                document.getElementById('first').src='funny-cat1_part1x1.jpg'
+            }
+        }
+    </script>
+</body>
+</html>
