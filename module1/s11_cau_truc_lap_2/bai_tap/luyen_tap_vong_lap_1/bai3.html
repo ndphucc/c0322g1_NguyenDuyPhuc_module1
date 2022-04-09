@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a=1;
+    let b=1;
+    let output= '1'+'<br>'+'1'+'<br>';
+    for(let i=2;i<20;) {
+        c=a+b;
+        output=output +""+c+'<br>';
+        i++;
+        if (i==20) {
+            break;
+        }
+        a=b+c;
+        output=output +""+a+'<br>';
+        i++;
+        if (i==20) {
+            break;
+        }
+        b=a+c;
+        output=output+""+b+'<br>';
+        i++;
+        if (i==20) {
+            break;
+        }
+    }
+    document.write(output);
+</script>
+</body>
+</html>

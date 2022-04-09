@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a =0;
+    a =parseInt(prompt('nhap nhiet do'));
+    do {
+
+        if(a<20) {
+            alert('tăng nhiệt độ');
+            a =parseInt(prompt('nhap nhiet do'));
+        }
+        else if(a>100) {
+            alert('giam nhiet do')
+            a =parseInt(prompt('nhap nhiet do'));
+        }
+    }while (a<20||a>100);
+</script>
+</body>
+</html>

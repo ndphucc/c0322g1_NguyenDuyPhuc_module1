@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    for(let i=1;i<=5;i++) {
+        for(let j=1;j<=i;j++) {
+            document.write('*');
+        }
+        document.write('<br>');
+    }
+    document.write('<br>'+'<br>');
+    for (let i=5;i>=1;i--) {
+        for (let j=i;j>=1;j--) {
+            document.write('*');
+        }
+        document.write('<br>');
+    }
+    document.write('<br>'+'<br>');
+
+    let tes ='<div style="width: 39px;text-align: right;" >';
+    for(let i=1;i<=5;i++) {
+        let a=5-i;
+        let b=5-a;
+        for(let c=1;c<=a;c++) {
+            tes = tes+' ';
+        }
+        for (let d=1;d<=b;d++) {
+           tes=tes+'*'
+        }
+       tes=tes+'<br>';
+    }
+    tes=tes+'</div>';
+    document.write(tes);
+    document.write('<br>'+'<br>');
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a=1;
+    let b=1;
+    while (true) {
+        c=a+b;
+        if (c%5===0) {
+            document.write(c+' chia het cho 5');
+            break;
+        }
+        a=b+c;
+        if (a%5===0) {
+            document.write(a + ' chia het cho 5');
+            break;
+        }
+        b = a + c;
+        if (b%5===0) {
+            document.write(b + ' chia het cho 5');
+            break;
+        }
+    }
+</script>
+</body>
+</html>

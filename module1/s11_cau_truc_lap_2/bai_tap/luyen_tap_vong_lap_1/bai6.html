@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let sum='';
+    let j=1;
+    for(let i=1;i<=30;) {
+        if(j%7==0) {
+            if(i==30) {
+                sum=sum+''+j;
+                break;
+            }
+            sum=sum+j+'+';
+            i++;
+        }
+        j++;
+    }
+    let total= eval(sum);
+    document.write(sum+'='+total);
+</script>
+</body>
+</html>
