@@ -7,13 +7,13 @@
 <body>
 <script>
     let b = parseInt(prompt());
-    let i=1;
+    let i=2;
     while (b>0) {
-        i++;
         if(snt(i)=== true) {
             document.write(i+'<br>');
             b--;
         }
+        i++;
     }
     function snt(a) {
         for(let i=2;i<a;i++) {

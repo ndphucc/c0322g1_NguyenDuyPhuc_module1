@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let tien=parseInt(prompt('nhap tien'));
+    let thang=parseInt(prompt('so thang'));
+    let lai=parseFloat(prompt('lai xuat'));
+    while (thang>0) {
+        tien=tien+tien*lai;
+        thang-=1;
+    }
+    alert(tien);
+</script>
+</body>
+</html>
