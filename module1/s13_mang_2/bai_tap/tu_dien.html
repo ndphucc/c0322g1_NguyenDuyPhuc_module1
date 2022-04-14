@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Nhập từ cần tìm <input type="text" id="input">
+    <button onclick="dictionary()">find</button>
+<h6 style="margin-top: 50px" id="output"></h6>
+</p>
+<script>
+    function dictionary() {
+        let english = ['name', 'rice', 'coffee', 'go', 'tea'];
+        let vietNam = ['tên', 'cơm', 'cà phê', 'đi', 'trà'];
+        let c = document.getElementById('input').value;
+        let flag= true;
+        for (let i = 0; i < english.length; i++) {
+            if (c == english[i]) {
+                document.write(vietNam[i]) ;
+                flag = false;
+                break;
+            }
+        }
+        if (flag== true) {
+            alert('ko tìm thấy')
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a=[ 'c', 's', 'c', '2', '6', '1' ];
+    let j= a.length;
+    for(let i=0;i<j;i++,j-- ) {
+        b=a[i];
+        a[i]=a[j];
+        a[j]=b;
+    }
+    document.write(a.join(' '))
+</script>
+</body>
+</html>

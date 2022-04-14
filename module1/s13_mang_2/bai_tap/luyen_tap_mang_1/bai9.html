@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = [];
+    for (let i = 0; i < 10; i++) {
+        a[i] = parseInt(prompt('nhập mảng a'));
+    }
+    let b = [];
+    for (let i = 0; i < 10; i++) {
+        b[i] = parseInt(prompt('nhập mảng b'));
+    }
+    let c = a.concat(b);
+    document.write(c.join(' '));
+</script>
+</body>
+</html>

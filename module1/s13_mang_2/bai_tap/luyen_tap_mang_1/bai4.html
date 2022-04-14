@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [3, 5, 8, 10, 14, 2, 15, 10, 17, 9];
+    let j=array.length;
+    for(let i=0;i<j;i++,j--) {
+        if(i<j) {
+            let b=array[i];
+            array[i]=array[j];
+            array[j]=b;
+        }
+    }
+    document.write(array.join(' '));
+</script>
+</body>
+</html>
