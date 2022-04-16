@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Viết hàm kiểm tra xem ký tự nhập vào có phải là ký tự số không. Nếu là ký tự số hàm
+    // trả về true, ngược lại trả về false.
+    function testNum(x) {
+        let a='0123456789'
+        if(a.indexOf(x)==-1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    let a= prompt('nhập ký tự muốn kiểm tra');
+    let b= testNum(a);
+    document.write(b);
+
+</script>
+</body>
+</html>

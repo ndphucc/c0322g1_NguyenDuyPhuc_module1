@@ -6,15 +6,14 @@
 </head>
 <body>
 <script>
-    let a = 'hjgkh23154yk';
-    let number ='0123456789'
-    let count =a.length;
+    let a = prompt("nhập chuổi");
+    let count=0;
     for(let i=0;i<a.length;i++) {
-        if(number.indexOf(a[i])!== -1) {
-            count--
+        if(a[i]!=' '&&a[i+1]==' ') {
+            count++;
         }
     }
-    document.write(count)
+    document.write('chuỗi có ' +(count+1)+' ký tự')
 </script>
 
 

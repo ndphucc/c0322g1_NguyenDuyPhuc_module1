@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt('nhập số nguyên'))
+    for (let i = 0; i <= n; i++) {
+        if (primeNumber(i) === false) {
+            document.write(i + ' ')
+        }
+    }
+
+    function primeNumber(a) {
+        if (a === 0 || a === 1) {
+            return false
+        }
+        for (let i = 2; i < a; i++) {
+            if (a % i === 0) {
+                return false
+            }
+        }
+        return true
+    }
+</script>
+</body>
+</html>

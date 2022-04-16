@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.
+    function findMin(a,b,c) {
+        if(a<=b&&a<=c) {
+            return a
+        }
+        else if(b<=a&&b<=c) {
+            return b
+        }
+        else {
+            return c
+        }
+    }
+    let a= parseInt(prompt('nhập số thứ nhất'));
+    let b= parseInt(prompt('nhập số thứ 2'));
+    let c= parseInt(prompt('nhập số thứ 3'));
+    document.write(findMin(a,b,c))
+</script>
+</body>
+</html>

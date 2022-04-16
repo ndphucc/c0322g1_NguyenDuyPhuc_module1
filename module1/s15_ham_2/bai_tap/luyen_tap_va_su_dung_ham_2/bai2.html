@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    <!--Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được-->
+    function perimeterCircle(a) {
+        let r= parseFloat(a)
+        return 2*r*3.14;
+    }
+    function acreageCircle(a) {
+        let r = parseFloat(a)
+        return r*r*3.14
+    }
+    let r=prompt('nhập bán kính hình tròn')
+    document.write('chu vi hình tròn = '+perimeterCircle(r)+'<br>'+'diện tích hình tròn = '+acreageCircle(r))
+
+</script>
+</body>
+</html>

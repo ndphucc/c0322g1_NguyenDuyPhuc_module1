@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt('nhập chiều dài của mảng'))
+    let arr = []
+    for (let i = 0; i < n; i++) {
+        arr[i] = parseInt(prompt('nhập phần tử thứ ' + i))
+    }
+    let x = parseInt(prompt('nhập số nguyên bất kì'))
+    document.write(arr.join(' '))
+    if (x % 2 === 0) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 !== 0) {
+                arr[i] += 1
+            }
+        }
+    } else {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                arr[i] += 1
+            }
+        }
+    }
+    document.write('<br>' + 'số nguyên người dùng nhập vào' + x + '<br>' + 'mảng sau khi thay đổi ' + arr.join(' '))
+</script>
+</body>
+</html>

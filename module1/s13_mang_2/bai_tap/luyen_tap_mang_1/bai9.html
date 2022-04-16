@@ -6,16 +6,18 @@
 </head>
 <body>
 <script>
-    let a = [];
-    for (let i = 0; i < 10; i++) {
-        a[i] = parseInt(prompt('nhập mảng a'));
+    let c = new Array();
+    let b = Array();
+    for (let j = 0; j < 10; j++) {
+        b[j] = parseInt(prompt('Nhập 10 phần tử mảng b: '));
+        c.push(b[j])
     }
-    let b = [];
+    let a = Array();
     for (let i = 0; i < 10; i++) {
-        b[i] = parseInt(prompt('nhập mảng b'));
+        a[i] = parseInt(prompt('Nhập 10 phần tử mảng a: '));
+        c.push(a[i]);
     }
-    let c = a.concat(b);
-    document.write(c.join(' '));
+    document.write(c);
 </script>
 </body>
 </html>

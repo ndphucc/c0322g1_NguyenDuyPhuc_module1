@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="numberOne"><input type="number" id="numberTwo">
+<button onclick="compare(document.getElementById('numberOne').value,document.getElementById('numberTwo').value)">kiểm tra</button>
+<script>
+    // Tạo hàm nhận vào hai tham số. Nếu giá trị của tham số thứ nhất lớn hơn tham số thứ hai,
+    // hiển thị hộp thoại thông báo cho người dùng. Nếu giá trị của tham số thứ nhất nhỏ hơn
+    // hoặc bằng tham số thứ hai, trả về tổng của hai tham số.
+    function compare(c,d) {
+        let a=parseInt(c);
+        let b=parseInt(d)
+        if(a>b) {
+            alert(a+'lớn hơn '+b)
+        }
+        else {
+            let sum =a+b
+            document.write('tổng hai số là: '+sum)
+        }
+    }
+</script>
+</body>
+</html>

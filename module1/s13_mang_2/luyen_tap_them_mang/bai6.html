@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [1, 7, 13, 6]
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] + arr[i + 1] === 20) {
+            arr[i] = 20;
+            arr[i + 1] = 20;
+            i++
+        }
+    }
+    document.write(arr.join(' '))
+</script>
+</body>
+</html>

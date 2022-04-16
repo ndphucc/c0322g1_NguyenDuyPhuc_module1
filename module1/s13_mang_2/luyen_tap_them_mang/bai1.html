@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = prompt('nhap chuoi')
+    let countCharaters = 0;
+    let countWord = 0;
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] != ' ') {
+            countCharaters++
+        }
+        if (a[i] === ' ' && a[i + 1] !== ' ') {
+            countWord++
+        }
+    }
+    if (countWord !== 0) {
+        countWord = countWord + 1
+    }
+    document.write('số từ = ' + countWord + '<br>' + 'số ký tự = ' + countCharaters);
+</script>
+</body>
+</html>
