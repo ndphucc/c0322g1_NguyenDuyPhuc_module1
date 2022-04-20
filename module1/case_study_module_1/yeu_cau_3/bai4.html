@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Viết một chương trình nhập một số từ bàn phím và in ra màn hình bằng chữ.
+    let a=prompt('');
+    document.write(numToString(a))
+    function numToString(a) {
+        x = a.toString();
+        let str = '';
+        for (let i = 0; i < x.length; i++) {
+            switch (x[i]) {
+                case '0':
+                    str = str + 'không '
+                    console.log('không')
+                    break;
+                case '1':
+                    str = str + 'một '
+                    break;
+                case '2':
+                    str = str + 'hai '
+                    break;
+                case '3':
+                    str = str + 'ba '
+                    break;
+                case '4':
+                    str = str + 'bốn '
+                    break;
+                case '5':
+                    str = str + 'năm '
+                    break;
+                case '6':
+                    str = str + 'sáu '
+                    break;
+                case '7':
+                    str = str + 'bảy '
+                    break;
+                case '8':
+                    str = str + 'tám '
+                    break;
+                case '9':
+                    str = str + 'chín '
+                    break;
+
+            }
+        }
+        return str;
+    }
+</script>
+</body>
+</html>

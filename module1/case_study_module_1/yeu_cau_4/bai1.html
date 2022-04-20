@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = 'a b   v     c   '
+    // let arr = removeSpace();
+    arr = a.split('')
+    arr.splice(1,1);
+    alert(arr.join(''))
+
+    // function removeSpace(str) {
+    //     let x = str.splice('');
+    //     while (x[0] === ' ' || x[x.length - 1] === ' ') {
+    //         if (x[0] === ' ') {
+    //             x.shift();
+    //         }
+    //         if (x[x.length - 1] === ' ') {
+    //             x.pop();
+    //         }
+    //     }
+    //     for (let i = 0; i < x.length; i++) {
+    //         if (x[i] === ' ' && x[i + 1] === ' ') {
+    //             x.splice(i + 1, 1);
+    //             i--;
+    //         }
+    //     }
+    //     return x
+    // }
+</script>
+</body>
+</html>

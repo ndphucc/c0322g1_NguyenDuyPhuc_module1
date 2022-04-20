@@ -16,19 +16,21 @@
     // thoại prompt để người dùng nhập vào tên của ngôi sao, sau đó gọi hàm với thông tin đầu
     // vào. Đừng quên xử lý trong trường hợp không tìm thấy ngôi sao nào. Cho kết quả hiển
     // thị trên màn hình.
-    let a = prompt('nhập vào tên ngôi sao')
-    var star =['Polaris','Aldebaran','Deneb','Vega','Altair','Dubhe','Regulus']
-    var constellation = ['Ursa Minor','Tarurus','Cygnus','Lyra','Aquila','Ursa Major','Leo']
+    let a = prompt('nhập vào tên ngôi sao');
+    var star =['Polaris','Aldebaran','Deneb','Vega','Altair','Dubhe','Regulus'];
+    var constellation = ['Ursa Minor','Tarurus','Cygnus','Lyra','Aquila','Ursa Major','Leo'];
+    let b=find(a)
+    document.write(b)
     function find(x) {
         let i;
-        for(i=0;i<7;i++) {
+        for(i=0;i<star.length;i++) {
             if(x===star[i]) {
-              break
+                return (constellation[i]);
             }
         }
-        document.write(constellation[i])
+        return 'ko tìm thấy'
     }
-    find(a)
+
 </script>
 </body>
 </html>

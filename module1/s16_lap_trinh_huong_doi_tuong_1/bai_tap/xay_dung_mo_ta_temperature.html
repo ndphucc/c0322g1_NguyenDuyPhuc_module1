@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Temperature{
+        constructor(value) {
+            this.value=value;
+        }
+        cToF() {
+            return (parseFloat(this.value)*1.8+32);
+        }
+        cToK() {
+            return (parseFloat(this.value)+273.15);
+        }
+    }
+    let a = new Temperature(20);
+    let f = a.cToF();
+    let k =a.cToK();
+    document.write('độ f = '+f+'<br>'+'độ k = '+k)
+</script>
+</body>
+</html>

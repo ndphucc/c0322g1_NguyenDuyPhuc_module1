@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Cho 2 mảng A và B chứa số nguyên. Tìm ra một mảng đã được sắp xếp chứa các
+    // phần tử xuất hiện trong mảng B nhưng lại không xuất hiện A
+    let A = [1, 2, 3, 4]
+    let B = [7, 2, 5, 4,4, 6,6, 3,  3, 1]
+    let C = findValue(A, B);
+    C.sort(function (a, b) {
+        return a - b
+    })
+    document.write(C.join(' '))
+
+    function findValue(arr1, arr2) {
+        let arr3 = [];
+        let f = 0;
+        for (let i = 0; i < arr2.length; i++) {
+            let flag = true;
+            for (let j = 0; j < arr1.length; j++) {
+                if (arr2[i] === arr1[j]) {
+                    flag = false;
+                    continue
+                }
+            }
+            if (flag === true) {
+                arr3.push(arr2[i])
+
+            }
+        }
+        for (let g = 0; g < arr3.length; g++) {
+            for (let h = g + 1; h < arr3.length; h++) {
+                if (arr3[g] === arr3[h]) {
+                    arr3.splice(h,1)
+                }
+            }
+        }
+        return arr3
+    }
+
+
+</script>
+</body>
+</html>

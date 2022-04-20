@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h3>
+        1.cafe<br><br>
+        2.cam vắt<br><br>
+        3.Nước ép cà rốt <br><br>
+        4.Nước ép cà chua<br><br>
+        5.Nước lọc<br><br>
+        6.Nước dừa<br><br>
+        7.Thoát
+    </h3>
+    <button onclick="mainBill()">mua</button>
+</div>
+<script>
+    function mainBill() {
+        let indexDrink = 0
+        let price
+        do {
+            indexDrink = parseInt(prompt('chọn 1 số'));
+            if(indexDrink>7||indexDrink<0) {
+                indexDrink=parseInt(prompt('nhập lại số từ 1>7'));
+            }
+            let num = alertQuantity(indexDrink);
+            if(indexDrink!=7) {
+                let price=valuePrice(indexDrink);
+                let result = price * num
+                alert('tổng tiền = ' + result)
+            }
+        } while (indexDrink != 7)
+
+    }
+
+
+    function alertQuantity(x) {
+        switch (x) {
+            case 1:
+                return parseInt(prompt('giá cafe là 10000 mờfi bạn nhập số lượng'));
+                break;
+            case 2:
+                return parseInt(prompt('giá cam vắt là 20000 mời bạn nhập số lượng'));
+                break;
+            case 3:
+                return parseInt(prompt('giá Nước ép cà rốt là 15000 mời bạn nhập số lượng'));
+                break;
+            case 4:
+                return parseInt(prompt('giá Nước ép cà chua là 15000 mời bạn nhập số lượng'));
+                break;
+            case 5:
+                return parseInt(prompt('giá Nước lọc là 5000 mời bạn nhập số lượng'));
+                break;
+            case 6:
+                return parseInt(prompt('giá Nước dừa là 50000 mời bạn nhập số lượng'));
+                break;
+        }
+    }
+    function valuePrice(x) {
+        switch (x) {
+            case 1:
+                return 10000;
+            case 2:
+                return 20000;
+            case 3:
+                return 15000;
+            case 4:
+                return 15000;
+            case 5:
+                return 5000;
+            case 6:
+                return 50000;
+        }
+    }
+</script>
+</body>
+</html>
