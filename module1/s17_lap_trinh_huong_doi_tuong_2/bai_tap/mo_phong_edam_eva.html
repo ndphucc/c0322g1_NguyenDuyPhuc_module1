@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Apple {
+        constructor() {
+            this.weight=10;
+        }
+        setWeight(weight) {
+            this.weight=weight;
+        }
+        getWeight() {
+            return this.weight;
+        }
+        decrease() {
+            this.weight--;
+        }
+
+    }
+    class Human{
+        constructor(name,gender,weight) {
+            this.name=name;
+            this.gender=gender;
+            this.weight=weight;
+        }
+        setName(name) {
+            this.name=name;
+        }
+        getName() {
+            return this.name;
+        }
+        setGender(gender) {
+            this.gender=gender;
+        }
+        getGender() {
+            return this.gender;
+        }
+        setWeight(weight) {
+            this.weight=weight;
+        }
+        getWeight() {
+            return this.weight
+        }
+        isMale() {
+            if(this.gender==='nam') {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        checkApple(apple) {
+            if(apple.getWeight()>0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        say(str) {
+            console.log(str)
+        }
+        eat(apple) {
+            if(this.checkApple(apple)===true) {
+                apple.decrease();
+                this.setWeight(this.weight+1);
+            }
+            else{
+                alert('táo đã hết')
+            }
+        }
+    }
+    let apple = new Apple();
+    let adam = new Human('Adam','nam',50);
+    let eva = new Human('Eva','nu',40);
+    document.write(adam.getName()+' có cân nặng '+adam.getWeight()+'<br>'+"apple có khối lượng là "+apple.weight+'<br>')
+    document.write(eva.getName()+' có cân nặng '+eva.getWeight()+'<br>'+"apple có khối lượng là "+apple.weight+'<br>')
+    while (parseInt(apple.getWeight())>0) {
+        adam.eat(apple);
+        document.write(adam.getName()+' có cân nặng '+adam.getWeight()+'<br>'+"apple có khối lượng là "+apple.weight+'<br>')
+        eva.eat(apple);
+        document.write(eva.getName()+' có cân nặng '+eva.getWeight()+'<br>'+"apple có khối lượng là "+apple.weight+'<br>')
+    }
+</script>
+</body>
+</html>

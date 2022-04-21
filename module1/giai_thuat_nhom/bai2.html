@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr1='';
+    let arr2='abc';
+    document.write(solution(arr1,arr2))
+    function solution(str1,str2) {
+        arr3=[]
+        let x=''
+        let result=0;
+        for(let i=0;i<str1.length;i++) {
+            for(let j=0;j<str2.length;j++) {
+                if(str1[i]===str2[j]) {
+                    let flag = true
+                    for(let h=0;h<arr3.length;h++) {
+                        if (str1[i]===arr3[h]) {
+                            flag=false;
+                            break;
+                        }
+                    }
+                    if (flag===true) {
+                        arr3.push(str1[i])
+                    }
+                }
+            }
+        }
+        x=arr3.toString()
+        for(let i=0;i<x.length;i++) {
+            let a=0;
+            let b=0;
+            for (let j=0;j<str1.length;j++) {
+                if (x[i]==str1[j]) {
+                    a++;
+                }
+            }
+            for (let j=0;j<str2.length;j++) {
+                if(x[i]==str2[j]) {
+                    b++;
+                }
+            }
+            if(a>b) {
+                result+=b;
+            }
+            else {
+                result+=a;
+            }
+        }
+        return result;
+    }
+</script>
+</body>
+</html>

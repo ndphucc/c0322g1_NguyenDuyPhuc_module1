@@ -6,30 +6,58 @@
 </head>
 <body>
 <script>
-    let a = 'a b   v     c   '
-    // let arr = removeSpace();
-    arr = a.split('')
-    arr.splice(1,1);
-    alert(arr.join(''))
+    let a = prompt('nhập chuỗi ')
+    a = removeSpace(a);
+    a = repairString(a)
+    alert(a)
+    document.write('từ dài nhất trong chuỗi là :  '+findLongWord(a))
+    function removeSpace(str) {
+        let x = str.split('');
+        while (x[0] === ' ' || x[x.length - 1] === ' ') {
+            if (x[0] === ' ') {
+                x.shift();
+            }
+            if (x[x.length - 1] === ' ') {
+                x.pop();
+            }
+        }
+        for (let i = 0; i < x.length; i++) {
+            if (x[i] === ' ' && x[i + 1] === ' ') {
+                x.splice(i + 1, 1);
+                i--;
+            }
+        }
+        let result = x.join('')
+        return result
+    }
+    function repairString(str) {
+        let result=[];
+        result.push(str[0].toUpperCase())
+        for(let i=1;i<str.length;i++) {
+            if(str[i-1]===' ') {
+                result.push(str[i].toUpperCase())
+            }
+            else {
+                result.push(str[i].toLowerCase())
+            }
+        }
+        result= result.join('');
+        return  result
+    }
+    function findLongWord(str) {
+        let x= str.split(' ');
+        let index=0;
+        let longString=x[0].length
+        for(let i=0;i<x.length;i++) {
+            if(longString<x[i].length) {
+                index=i;
+                longString=x[i].length;
+            }
+        }
+        return x[index];
+    }
 
-    // function removeSpace(str) {
-    //     let x = str.splice('');
-    //     while (x[0] === ' ' || x[x.length - 1] === ' ') {
-    //         if (x[0] === ' ') {
-    //             x.shift();
-    //         }
-    //         if (x[x.length - 1] === ' ') {
-    //             x.pop();
-    //         }
-    //     }
-    //     for (let i = 0; i < x.length; i++) {
-    //         if (x[i] === ' ' && x[i + 1] === ' ') {
-    //             x.splice(i + 1, 1);
-    //             i--;
-    //         }
-    //     }
-    //     return x
-    // }
+
 </script>
 </body>
 </html>
