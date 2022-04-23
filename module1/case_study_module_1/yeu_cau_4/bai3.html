@@ -6,9 +6,10 @@
 </head>
 <body>
 <script>
-    let a = 'aaaa';
-    let b = 'aaaa';
-    commonCharacter(a, b);
+    let a = prompt();
+    let b = prompt();
+    document.write(a+'<br>'+b+'<br>')
+    document.write('2 chuỗi có '+commonCharacter(a, b)+' ký tự giống nhau');
 
     function commonCharacter(s1, s2) {
         count = 0;
@@ -18,17 +19,18 @@
             for (let j = 0; j < b.length; j++) {
                 if (a[i] === b[j]) {
                     count++;
-                    a.splice(1, i);
-
-                    document.write(a + '<br>' + b + '<br>');
+                    a.splice(i,1);
+                    b.splice(j,1)
+                    i--;
                     break;
-
                 }
             }
 
         }
+        return count;
 
     }
+
 </script>
 </body>
 </html>

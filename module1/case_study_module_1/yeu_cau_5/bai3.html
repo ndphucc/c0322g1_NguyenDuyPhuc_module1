@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let m = parseInt(prompt('nhập chiều dài của mảng '));
+    let n = parseInt(prompt('nhập chiều rộng của mảng'));
+    let a = 0;
+    let arr = new Array(m)
+    for (let i = 0; i < m; i++) {
+        arr[i] = new Array(n);
+        for (let j = 0; j < n; j++) {
+            arr[i][j] = parseInt(prompt('nhập giá trị của phần tử [' + i + '][' + j + ']'));
+        }
+    }
+    for (let i = 0; i < arr.length; i++) {
+        document.write(arr[i].join(' ') + '<br>');
+    }
+    document.write('max của mảng :'+maxArr(arr));
+    document.write('<br>'+'min của mảng : '+minArr(arr))
+    function maxArr(arr) {
+        let max = arr[0][0];
+        for(let i=0;i<arr.length;i++) {
+            for(let j=0;j<arr.length;j++) {
+               if(max<arr[i][j]) {
+                   max=arr[i][j];
+               }
+            }
+        }
+        return max;
+    }
+    function minArr(arr) {
+        let min = arr[0][0];
+        for(let i=0;i<arr.length;i++) {
+            for(let j=0;j<arr.length;j++) {
+                if(min>arr[i][j]) {
+                    min=arr[i][j];
+                }
+            }
+        }
+        return min;
+    }
+</script>
+</body>
+</html>
