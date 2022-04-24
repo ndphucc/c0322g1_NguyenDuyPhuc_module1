@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table {
+        width: 30%;
+    }
+    input {
+        size: 10px;
+    }
+</style>
+<body>
+    <div>
+        <h1>Xổ số CodeGym</h1>
+        <table>
+            <tr>
+                <td><input type="text" size="5" value="04"></td>
+                <td><input type="text" size="5" value="08"></td>
+                <td><input type="text" size="5" value="02"></td>
+                <td><input type="text" size="5" value="25"></td>
+                <td><input type="text" size="5" value="05"></td>
+                <td><input type="text" size="5" value="02"></td>
+            </tr>
+            <tr>
+                <td><input type="text" size="5" value="04"></td>
+                <td><input type="text" size="5" value="08"></td>
+                <td><input type="text" size="5" value="02"></td>
+                <td><input type="text" size="5" value="25"></td>
+                <td><input type="text" size="5" value="05"></td>
+                <td><input type="text" size="5" value="02"></td>
+            </tr>
+        </table>
+        <br>
+        <button onclick="buyVietLot()">mua vé</button>
+        <button onclick="checkVietLot()">xem kết quả</button>
+    </div>
+    <script>
+        let resultVietLot =[4,8,2,25,5,2]
+        let arrVietLot=[];
+        class VietLot {
+            constructor(num1,num2,num3,num4,num5,num6) {
+                this._num1 = num1;
+                this._num2 = num2;
+                this._num3 = num3;
+                this._num4 = num4;
+                this._num5 = num5;
+                this._num6 = num6;
+            }
+
+            getNum1() {
+                return this._num1;
+            }
+
+            setNum1(value) {
+                this._num1 = value;
+            }
+
+            getNum2() {
+                return this._num2;
+            }
+
+            setNum2(value) {
+                this._num2 = value;
+            }
+
+            getNum3() {
+                return this._num3;
+            }
+
+            setNum3(value) {
+                this._num3 = value;
+            }
+
+            getNum4() {
+                return this._num4;
+            }
+
+            setNum4(value) {
+                this._num4 = value;
+            }
+
+            getNum5() {
+                return this._num5;
+            }
+
+            setNum5(value) {
+                this._num5 = value;
+            }
+
+            getNum6() {
+                return this._num6;
+            }
+
+            setNum6(value) {
+                this._num6 = value;
+            }
+            check() {
+                if(this._num6===resultVietLot[5]) {
+                    if(this._num5===resultVietLot[4]) {
+                        if(this._num4===resultVietLot[3]) {
+                            if(this._num3===resultVietLot[2]) {
+                                if(this._num2===resultVietLot[1]) {
+                                    if(this._num1===resultVietLot[0]) {
+                                        alert('bạn đã trúng giải nhất');
+                                    }
+                                    else {
+                                        alert('bạn đã trúng giải nhì');
+                                    }
+                                }else {
+                                    alert('bạn đã trúng giải khuyến khích');
+                                }
+                            }else {
+                                alert('bạn đã trúng giải khuyến khích');
+                            }
+                        }else {
+                            alert('chúc bạn may mắn lần sau');
+                        }
+                    }else {
+                        alert('chúc bạn may mắn lần sau');
+                    }
+                }else {
+                    alert('chúc bạn may mắn lần sau');
+                }
+            }
+        }
+        function buy(num1,num2,num3,num4,num5,num6) {
+            let newVietlot= new VietLot(num1,num2,num3,num4,num5,num6);
+            arrVietLot.push(newVietlot);
+        }
+        function checkVietLot() {
+            for(let i=0;i<arrVietLot.length;i++) {
+                arrVietLot[i].check();
+            }
+        }
+        function buyVietLot() {
+            let a = parseInt(prompt('bạn có 2 lựa chọn:\n1.bạn muốn tự chọn số.\n2.hệ thống tự random'));
+            if(a===1) {
+                let num1= parseInt(prompt('mời bạn chọn số đầu tiên:'));
+                let num2= parseInt(prompt('mời bạn chọn số thứ hai:'));
+                let num3= parseInt(prompt('mời bạn chọn số thứ ba:'));
+                let num4= parseInt(prompt('mời bạn chọn số thứ tư:'));
+                let num5= parseInt(prompt('mời bạn chọn số thứ năm:'));
+                let num6= parseInt(prompt('mời bạn chọn số thứ sáu:'));
+                let value=confirm('sô bạn muốn mua là '+num1+' '+num2+' '+num3+' '+' '+num4+' '+num5+' '+num6);
+                if(value) {
+                    buy(num1,num2,num3,num4,num5,num6);
+                    alert('bạn đã mua thành công');
+                }else {
+                    buyVietLot();
+                }
+            }
+            else if(a===2) {
+                let num1=Math.floor(Math.random()*100)
+                let num2=Math.floor(Math.random()*100)
+                let num3=Math.floor(Math.random()*100)
+                let num4=Math.floor(Math.random()*100)
+                let num5=Math.floor(Math.random()*100)
+                let num6=Math.floor(Math.random()*100)
+                let value=confirm('sô bạn muốn mua là '+num1+' '+num2+' '+num3+' '+' '+num4+' '+num5+' '+num6);
+                if(value) {
+                    buy(num1,num2,num3,num4,num5,num6);
+                    alert('bạn đã mua thành công');
+                }else {
+                    buyVietLot();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table  {
+            border-collapse: collapse ;
+            width: 50%;
+            align-content: center;
+            margin: auto;
+        }
+        th {
+            color: white;
+            background: blue;
+            border: solid 1px black;
+        }
+        button {
+            width: 100%;
+        }
+        td{
+            border: solid 1px;
+        }
+        #white {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+<p id="display"></p>
+<script>
+    class Car {
+        constructor(name, color, price) {
+            this._name = name;
+            this._color = color;
+            this._price = price;
+        }
+
+        getName() {
+            return this._name;
+        }
+
+        setName(value) {
+            this._name = value;
+        }
+
+        getColor() {
+            return this._color;
+        }
+
+        setColor(value) {
+            this._color = value;
+        }
+
+        getPrice() {
+            return this._price;
+        }
+
+        setPrice(value) {
+            this._price = value;
+        }
+
+    }
+
+    let newCar = new Car('exc', 'whiter', 5000);
+    let newCar1 = new Car('exc1', 'whiter', 5000);
+    let newCar2 = new Car('exc2', 'whiter', 5000);
+    let arrCar=[]
+    arrCar.push(newCar);
+    arrCar.push(newCar1);
+    arrCar.push(newCar2);
+    display(arrCar);
+
+    function display(arr) {
+        let result ='<table id="a">' +
+                    '<tr>' +
+                    '<th>STT</th>' +
+                    '<th>Name</th>' +
+                    '<th>Color</th>' +
+                    '<th>Price</th>' +
+                    '</tr>'
+        for (let i = 0; i < arr.length; i++) {
+            result = result + '<tr>' +
+                '<td>' + (i + 1) + '</td>' +
+                '<td>' + arr[i].getName() + '</td>' +
+                '<td>' + arr[i].getColor() + '</td>' +
+                '<td>' + arr[i].getPrice() + '</td>' +
+                '</tr>'
+        }
+        result += '</table>'+"<br>"+"<table>" +
+            "<tr>" +
+                '<td style="border: none">'+"<button onclick='update()'>Update</button>"+'</td>'+
+                '<td style="border: none">'+"<button onclick='add()'>Add</button>"+'</td>'+
+                '<td style="border: none">'+"<button onclick='remove()'>Delete</button>"+'</td>'+
+            "</tr>" +
+            "</table>";
+
+        document.getElementById('display').innerHTML = result
+    }
+    function update() {
+        let value=parseInt(prompt('bạn muốn sữa dòng thứ mấy ?'))
+        value--;
+        let a= prompt('nhập tên');
+        let b= prompt('nhập màu');
+        let c= parseInt(prompt('nhập giá'));
+        let newCar= new Car(a,b,c);
+        arrCar[value]=newCar;
+        alert("bạn đã cập nhật thành công")
+        display(arrCar);
+    }
+    function remove() {
+        let value=parseInt(prompt('bạn muốn xóa dòng thứ mấy ?'))
+        value--;
+        let result= confirm('bạn có thật sự muốn xóa '+arrCar[value].getName())
+        if(result) {
+            arrCar.splice(value,1);
+            alert('bạn đã xóa thành công')
+            display(arrCar);
+        }
+        else {
+            alert('chọn cẩn thận');
+        }
+    }
+    function add() {
+        let a= prompt('Enter name');
+        let b= prompt('Enter color');
+        let c= parseInt(prompt('Enter price'));
+        let newCar= new Car(a,b,c);
+        arrCar.push(newCar);
+        alert('bạn đã thêm thành công')
+        display(arrCar);
+    }
+</script>
+</body>
+</html>
