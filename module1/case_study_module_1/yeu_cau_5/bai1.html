@@ -10,10 +10,10 @@
 //  số nhập từ bàn phím.
     let m = parseInt(prompt('nhập chiều dài của mảng '));
     let n = parseInt(prompt('nhập chiều rộng của mảng'));
-    let a = 0;
+    // let a = 0;
     let arr = new Array(m)
     for (let i = 0; i < m; i++) {
-        arr[i] = new Array(n)
+        arr[i] = [];
         for (let j = 0; j < n; j++) {
             arr[i][j] = parseInt(prompt('nhập giá trị của phần tử [' + i + '][' + j + ']'));
         }

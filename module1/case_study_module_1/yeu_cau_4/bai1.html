@@ -6,55 +6,59 @@
 </head>
 <body>
 <script>
-    let a = prompt('nhập chuỗi ')
-    a = removeSpace(a);
-    a = repairString(a)
-    alert(a)
-    document.write('từ dài nhất trong chuỗi là :  '+findLongWord(a))
+    // let a = prompt('nhập chuỗi ');
+    let str = '   TrAn    DUC hAi'
+    str = removeSpace(str);
+    str = repairString(str)
+    alert(str)
+    document.write('từ dài nhất trong chuỗi là :  ' + findLongWord(str))
+
     function removeSpace(str) {
-        let x = str.split('');
-        while (x[0] === ' ' || x[x.length - 1] === ' ') {
-            if (x[0] === ' ') {
-                x.shift();
-            }
-            if (x[x.length - 1] === ' ') {
-                x.pop();
-            }
-        }
-        for (let i = 0; i < x.length; i++) {
-            if (x[i] === ' ' && x[i + 1] === ' ') {
-                x.splice(i + 1, 1);
+        let newStr = str.trim()
+        newStr = newStr.split('');
+        // while (x[0] === ' ' || x[x.length - 1] === ' ') {
+        //     if (x[0] === ' ') {
+        //         x.shift();
+        //     }
+        //     if (x[x.length - 1] === ' ') {
+        //         x.pop();
+        //     }
+        // }
+        for (let i = 0; i < newStr.length; i++) {
+            if (newStr[i] === ' ' && newStr[i + 1] === ' ') {
+                newStr.splice(i, 1);
                 i--;
             }
         }
-        let result = x.join('')
+        let result = newStr.join('')
         return result
     }
+
     function repairString(str) {
-        let result=[];
+        let result = [];
         result.push(str[0].toUpperCase())
-        for(let i=1;i<str.length;i++) {
-            if(str[i-1]===' ') {
+        for (let i = 1; i < str.length; i++) {
+            if (str[i - 1] === ' ') {
                 result.push(str[i].toUpperCase())
-            }
-            else {
+            } else {
                 result.push(str[i].toLowerCase())
             }
         }
-        result= result.join('');
-        return  result
+        result = result.join('');
+        return result
     }
+
     function findLongWord(str) {
-        let x= str.split(' ');
-        let index=0;
-        let longString=x[0].length
-        for(let i=0;i<x.length;i++) {
-            if(longString<x[i].length) {
-                index=i;
-                longString=x[i].length;
+        let newStr = str.split(' ');
+        let index = 0;
+        let longString = newStr[0].length
+        for (let i = 0; i < newStr.length; i++) {
+            if (longString < newStr[i].length) {
+                index = i;
+                longString = newStr[i].length;
             }
         }
-        return x[index];
+        return newStr[index];
     }
 
 

@@ -19,29 +19,25 @@
     for (let i = 0; i < arr.length; i++) {
         document.write(arr[i].join(' ') + '<br>');
     }
-    document.write('max của mảng :'+maxArr(arr));
-    document.write('<br>'+'min của mảng : '+minArr(arr))
+    document.write('max của mảng :'+maxArr(arr)[0]);
+    document.write('<br>'+'min của mảng : '+maxArr(arr)[1]);
     function maxArr(arr) {
         let max = arr[0][0];
+        let min = arr[0][0];
+        let arr1=[];
         for(let i=0;i<arr.length;i++) {
             for(let j=0;j<arr.length;j++) {
                if(max<arr[i][j]) {
                    max=arr[i][j];
                }
-            }
-        }
-        return max;
-    }
-    function minArr(arr) {
-        let min = arr[0][0];
-        for(let i=0;i<arr.length;i++) {
-            for(let j=0;j<arr.length;j++) {
                 if(min>arr[i][j]) {
-                    min=arr[i][j];
+                    min = arr[i][j];
                 }
             }
         }
-        return min;
+        arr1.push(max);
+        arr1.push(min);
+        return arr1;
     }
 </script>
 </body>
