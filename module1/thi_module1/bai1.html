@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let numDiem = parseInt(prompt('nhap số lượng điểm thi'));
+    let arrDiem = [];
+    for (let i = 0; i < numDiem; i++) {
+        do {
+            arrDiem[i] = parseFloat(prompt('nhập điểm'));
+            if (arrDiem[i]>10||arrDiem[i]<0) {
+                arrDiem[i]=parseFloat(prompt('điểm không hợp lệ nhập lại'))
+            }
+        }while (arrDiem[i]>10||arrDiem<0);
+    }
+    for (let i = 0; i < numDiem; i++) {
+        document.write(arrDiem[i]+' ');
+    }
+    let maxDiem = findMax(arrDiem);
+    document.write('<br>'+'điểm lớn nhất là: ' + maxDiem);
+
+    function findMax(arr) {
+        let max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (max < arr[i]) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+</script>
+</body>
+</html>

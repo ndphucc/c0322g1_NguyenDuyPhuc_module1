@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+    class Cricle {
+        constructor(x, y, r, color) {
+            this._x = x;
+            this._y = y;
+            this._r = r;
+            this._color = color;
+        }
+
+        setX(value) {
+            this._x = value;
+        }
+
+        getX() {
+            return this._x;
+        }
+
+        setY(value) {
+            this._y = value;
+        }
+
+        getY() {
+            return this._y;
+        }
+
+        setR(value) {
+            this._r = value;
+        }
+
+        getR() {
+            return this._r;
+        }
+
+        setColor(value) {
+            this._color = value;
+        }
+
+        getColor() {
+            return this._color;
+        }
+        render() {
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.beginPath();
+            ctx.arc(this.getX(), this.getY(), this.getR(), 0, 2 * Math.PI);
+            ctx.fill();
+        }
+    }
+    let x=parseInt(prompt('nhập tọa độ x'));
+    let y=parseInt(prompt('nhập tọa độ y'));
+    let r=parseInt(prompt('nhập bán kính'));
+    let color=prompt('nhập màu sắc');
+    let circle =new Cricle(95,50,40 ,color);
+    circle.render();
+    document.write('Hình tròn có tạo độ '+circle.getX()+','+circle.getY()+' có bán kính '+circle.getR()+' có màu sắc '+circle.getColor())
+</script>
+</body>
+</html>

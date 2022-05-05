@@ -2,100 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Viết chương trình gọi nước uống đơn giản</title>
+    <title>Title</title>
 </head>
 <body>
-<form>
-    <table border="1" cellpadding="3">
-        <tr>
-            <th colspan="7" style="background: khaki">Danh sách chọn món</th>
-
-        </tr>
-        <tr><input type="reset"></tr>
-        <tr>
-            <td>Mã Số</td>
-            <td>Nước ngọt</td>
-            <td>Đơn giá</td>
-            <td>Số lượng</td>
-            <td>Thành tiền</td>
-        <tr>
-            <td>1</td>
-            <td>Cà phê</td>
-            <td>15000</td>
-            <td><input id="sl1" type="number" size="10px"
-                       oninput="tt1(this.value)"
-                       onchange="tt1(this.value)"
-                       onchange="total()" oninput="total()">
-            </td>
-            <td id="thanh1"><input type="number" size="10px" ></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>cam vắt</td>
-            <td>30000</td>
-            <td><input id="sl2" type="number" size="10px"
-                       oninput="tt2(this.value)"
-                       onchange="tt2(this.value)"
-                       onchange="total()" oninput="total()">
-            </td>
-            <td id="thanh2"><input type="number" size="10px"></td>
-        </tr>
-        <tr>
-            <th colspan="4" onclick="total()">Tổng cộng</th>
-            <th id="total"></th>
-        </tr>
-    </table>
-</form>
 <script>
-    function tt1(valNum1) {
-        valNum1 = parseInt(valNum1);
-        document.getElementById("thanh1").innerHTML = 15000 * valNum1;
-        return 15000*valNum1;
-    }
+    // let arrBird = [1, 5, 5,5, 3, 3, 5, 4, 3, 2];
+    // document.write(migratoryBirds(arrBird));
+    alert(NaN===NaN);
 
-    function tt2(valNum2) {
-        valNum2 = parseInt(valNum2);
-        document.getElementById("thanh2").innerHTML = 30000 * valNum2;
-        return 30000*valNum2;
-    }
-    function total() {
-        let a=tt1(document.getElementById('sl1').value);
-        let b=tt2(document.getElementById('sl2').value);
-        if(isNaN(a)===true) {
-            a=0;
+    function migratoryBirds(arr) {
+        let count1 = 0;
+        let arrBird;
+        for (let i = 0; i < arr.length; i++) {
+            let count2 = 0;
+            for (let j =0; j < arr.length; j++) {
+                if (arr[i] === arr[j]) {
+                    count2++;
+                }
+            }
+            if ((count2 > count1) || (count2 === count1 && arr[i] < arrBird)) {
+                arrBird = arr[i];
+                count1 = count2;
+            }
         }
-        if(isNaN(b)===true) {
-            b=0;
-        }
-        let sum=a+b;
-        document.getElementById('total').innerHTML=sum;
+        return arrBird;
     }
-
-    /*  function tt3(valNum3) {
-          valNum3 = parseInt(valNum3);
-          document.getElementById("thanh3").innerHTML = 30000 * valNum3;
-      }
-
-      function tt4(valNum4) {
-          valNum4 = parseInt(valNum4);
-          document.getElementById("thanh4").innerHTML = 30000 * valNum4;
-      }
-
-      function tt5(valNum5) {
-          valNum5 = parseInt(valNum5);
-          document.getElementById("thanh5").innerHTML = 10000 * valNum5;
-      }
-
-      function tt6(valNum6) {
-          valNum6 = parseInt(valNum6);
-          document.getElementById("thanh6").innerHTML = 35000 * valNum6;
-      }
-
-      function tongcong(valNum) {
-          valNum = parseInt(valNum)
-          document.getElementById("total").innerHTML =  15000 * valNum1 + 35000 * valNum6
-      }*/
-
 
 </script>
 </body>

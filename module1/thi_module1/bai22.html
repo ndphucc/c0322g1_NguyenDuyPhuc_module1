@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let numSoNguyen = parseInt(prompt('nhap số lượng số nguyên'));
+    let arrSoNguyen = [];
+    for (let i = 0; i < numSoNguyen; i++) {
+        do {
+            arrSoNguyen[i] = parseFloat(prompt('nhập số nguyên'));
+            if (isNaN(arrSoNguyen[i]) === true) {
+                arrSoNguyen[i] = parseFloat(prompt('nhập lại số hợp lệ'));
+            }
+        } while (isNaN(arrSoNguyen[i]) === true);
+    }
+    let x = parseInt(prompt('nhập số nguyên x'));
+    document.write(arrSoNguyen.join(' ')+'<br>'+x+'<br>');
+    arrSoNguyen = tryRemoveFromArray(x, arrSoNguyen);
+    document.write(arrSoNguyen.join(' '));
+
+    function tryRemoveFromArray(x, arr) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === x) {
+                arr.splice(i, 1);
+                i--;
+            }
+        }
+        return arr;
+
+    }
+</script>
+</body>
+</html>

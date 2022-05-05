@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number= parseInt(prompt('nhập số nguyên'));
+    let kiemTraFibonancci=isFibonacci(number);
+    if(kiemTraFibonancci===true) {
+        document.write(number+' nằm trong dãy fibonacci');
+    }
+    else  {
+        document.write(number+' không nằm trong dãy fibonacci');
+    }
+    function isFibonacci(x) {
+        let soDauTien=0;
+        let soThuHai=1;
+        let soThuba=0;
+        while (soThuba<x) {
+            soThuba=soDauTien+soThuHai;
+            if(x===soDauTien) {
+                return true;
+            }
+            else if(x===soThuHai) {
+                return true;
+            }else if(x===soThuba) {
+                return true;
+            }
+            soDauTien=soThuHai;
+            soThuHai=soThuba;
+        }
+        return false;
+
+    }
+</script>
+</body>
+</html>
