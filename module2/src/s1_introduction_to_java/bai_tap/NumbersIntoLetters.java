@@ -3,7 +3,6 @@ package s1_introduction_to_java.bai_tap;
 import java.util.Scanner;
 
 public class NumbersIntoLetters {
-    private static final String[] TEN = {"ten","eleven","twelve"};
     public static void main(String[] args) {
         String letters = "";
         Scanner scanner = new Scanner(System.in);
