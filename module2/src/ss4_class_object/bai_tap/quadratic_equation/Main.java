@@ -2,7 +2,7 @@ package ss4_class_object.bai_tap.quadratic_equation;
 
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập a");

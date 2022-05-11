@@ -3,10 +3,10 @@ package ss5_access_modifier_static_method_static_property.bai_tap.acess_modifier
 public class Cricle {
     private double radius = 1.0;
     private String color ="red";
-    Cricle() {
+    public Cricle() {
 
     }
-    Cricle(double r) {
+    public Cricle(double r) {
         this.radius=r;
     }
     public double getRadius() {

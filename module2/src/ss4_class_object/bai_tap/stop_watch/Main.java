@@ -3,7 +3,7 @@ package ss4_class_object.bai_tap.stop_watch;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
