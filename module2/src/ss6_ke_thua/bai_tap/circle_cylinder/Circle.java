@@ -1,17 +1,21 @@
 package ss6_ke_thua.bai_tap.circle_cylinder;
 
-public class Circle {
+public class Circle implements Comparable<Circle>{
     private double radius;
     private String color;
     private double area;
 
-    Circle() {
+    public Circle() {
 
     }
 
     public Circle(double radius, String color) {
         this.radius = radius;
         this.color = color;
+    }
+
+    public Circle(double radius) {
+        this.radius=radius;
     }
 
     public double getRadius() {
@@ -48,4 +52,14 @@ public class Circle {
                 ", area=" + area +
                 '}';
     }
+
+    @Override
+    public int compareTo(Circle o) {
+        return Double.compare(this.getRadius(), o.getRadius());
+    }
+
+//    @Override
+//    public int compare(ss6_ke_thua.thuc_hanh.shape.Circle c1, ss6_ke_thua.thuc_hanh.shape.Circle c2) {
+//
+//    }
 }
