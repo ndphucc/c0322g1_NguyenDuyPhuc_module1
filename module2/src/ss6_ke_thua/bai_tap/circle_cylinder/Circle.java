@@ -1,6 +1,6 @@
 package ss6_ke_thua.bai_tap.circle_cylinder;
 
-public class Circle implements Comparable<Circle>{
+public class Circle implements Comparable<Circle> {
     private double radius;
     private String color;
     private double area;
@@ -15,7 +15,7 @@ public class Circle implements Comparable<Circle>{
     }
 
     public Circle(double radius) {
-        this.radius=radius;
+        this.radius = radius;
     }
 
     public double getRadius() {
@@ -37,9 +37,11 @@ public class Circle implements Comparable<Circle>{
     public void setArea(double area) {
         this.area = area;
     }
+
     public double getArea() {
         return this.area;
     }
+
     public void caculationArea() {
         this.area = Math.pow(this.radius, 2) * Math.PI;
     }

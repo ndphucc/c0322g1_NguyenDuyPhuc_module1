@@ -30,15 +30,15 @@ public class Cylinder extends Circle {
     }
 
     public void caculationVolume() {
-        this.volume= Math.PI*Math.pow(this.getRadius(),2)*this.height;
+        this.volume = Math.PI * Math.pow(this.getRadius(), 2) * this.height;
     }
 
     @Override
     public String toString() {
-        return "Cylinder{" +"Radius"+this.getRadius()+
+        return "Cylinder{" + "Radius" + this.getRadius() +
                 "height=" + height +
                 ", volume=" + volume +
-                ",Area"+this.getArea()+
+                ",Area" + this.getArea() +
                 '}';
     }
 }
