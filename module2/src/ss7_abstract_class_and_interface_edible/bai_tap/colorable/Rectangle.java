@@ -1,6 +1,6 @@
 package ss7_abstract_class_and_interface_edible.bai_tap.colorable;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape {
     private double width = 1.0;
     private double length = 1.0;
 
@@ -33,6 +33,7 @@ public class Rectangle extends Shape{
     public void setLength(double length) {
         this.length = length;
     }
+
     @Override
     public double getArea() {
         return width * this.length;

@@ -1,6 +1,6 @@
 package ss7_abstract_class_and_interface_edible.bai_tap.colorable;
 
-public class Circle extends Shape{
+public class Circle extends Shape {
     private double radius = 1.0;
 
     public Circle() {
@@ -22,6 +22,7 @@ public class Circle extends Shape{
     public void setRadius(double radius) {
         this.radius = radius;
     }
+
     @Override
     public double getArea() {
         return radius * radius * Math.PI;

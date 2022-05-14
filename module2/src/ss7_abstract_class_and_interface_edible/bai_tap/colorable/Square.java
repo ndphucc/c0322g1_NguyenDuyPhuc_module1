@@ -1,6 +1,6 @@
 package ss7_abstract_class_and_interface_edible.bai_tap.colorable;
 
-public class Square extends Shape implements Colorable{
+public class Square extends Shape implements Colorable {
     private double width = 5;
 
     public Square(double width) {
@@ -23,9 +23,10 @@ public class Square extends Shape implements Colorable{
     public void setWidth(double width) {
         this.width = width;
     }
+
     @Override
     public double getArea() {
-        return this.width*width;
+        return this.width * width;
     }
 
     @Override
