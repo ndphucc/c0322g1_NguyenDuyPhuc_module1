@@ -39,6 +39,6 @@ public class Main {
                 case 7:
                     System.exit(1);
             }
-        }while (true);
+        } while (true);
     }
 }

@@ -1,6 +1,6 @@
 package ss12_java_collection_framework.bai_tap.luyen_tap_su_dung_java_collection_framework;
 
-public class Product implements Comparable<Product>{
+public class Product implements Comparable<Product> {
     private int id;
     private String name;
     private double price;
@@ -49,9 +49,9 @@ public class Product implements Comparable<Product>{
 
     @Override
     public int compareTo(Product o) {
-        if (this.price<o.price) {
+        if (this.price < o.price) {
             return 1;
-        }else {
+        } else {
             return -1;
         }
     }

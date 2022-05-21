@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class ProductManager  {
+public class ProductManager {
     public static LinkedList<Product> productList = new LinkedList<>();
     static Scanner scanner = new Scanner(System.in);
 
@@ -77,24 +77,24 @@ public class ProductManager  {
             System.out.println("Id không tồn tại");
         }
     }
+
     public void sortProductList() {
         Collections.sort(productList);
         displayProducts();
     }
+
     public void findProduct() {
         System.out.println("Nhập tên bạn muốn tìm");
         String find = scanner.nextLine();
-        boolean flag=false;
-        for (Product item: productList) {
+        boolean flag = false;
+        for (Product item : productList) {
             if (item.getName().contains(find)) {
                 System.out.println(item);
-                flag=true;
+                flag = true;
             }
         }
-        if (flag==false) {
+        if (flag == false) {
             System.out.println("Không tìm thấy");
         }
     }
-
-
 }
