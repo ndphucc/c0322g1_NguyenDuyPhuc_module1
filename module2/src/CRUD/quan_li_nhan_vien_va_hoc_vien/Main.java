@@ -184,10 +184,10 @@ public class Main {
     public static void sort() {
         for (int i = 0; arrPerson[i + 1] != null; i++) {
             for (int j = i + 1; arrPerson[j] != null; j++) {
-                if (arrPerson[i].getId()>arrPerson[j].getId()) {
-                    Person person=arrPerson[i];
-                    arrPerson[i]=arrPerson[j];
-                    arrPerson[j]= person;
+                if (arrPerson[i].getId() > arrPerson[j].getId()) {
+                    Person person = arrPerson[i];
+                    arrPerson[i] = arrPerson[j];
+                    arrPerson[j] = person;
                 }
             }
         }

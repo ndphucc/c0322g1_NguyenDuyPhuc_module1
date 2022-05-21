@@ -1,12 +1,10 @@
 package CRUD.quan_li_nhan_vien_va_hoc_vien;
 
-import java.util.Comparator;
-
 public abstract class Person {
     private int id;
     private String name;
     private int age;
-    private String gender="nam";
+    private String gender = "nam";
 
     public Person() {
     }

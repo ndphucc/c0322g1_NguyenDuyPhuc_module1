@@ -1,6 +1,6 @@
 package CRUD.quan_li_nhan_vien_va_hoc_vien;
 
-public class Student extends Person{
+public class Student extends Person {
     private double point = 5;
 
     public Student(double point) {
@@ -23,10 +23,13 @@ public class Student extends Person{
         this.point = point;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Student{" + super.toString()+
-//                "point=" + point +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Student{id=" + this.getId() +
+                ",name=" + this.getName() +
+                ",age=" + this.getAge() +
+                ",gender=" + this.getGender() +
+                ",point=" + point +
+                '}';
+    }
 }

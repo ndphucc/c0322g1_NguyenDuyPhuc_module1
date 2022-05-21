@@ -25,8 +25,11 @@ public class Teacher extends Person{
 
     @Override
     public String toString() {
-        return "Teacher{" + super.toString()+
-                "salary=" + salary +
+        return "Teacher{id=" + this.getId()+
+                ",name=" + this.getName() +
+                ",age=" + this.getAge() +
+                ",gender=" + this.getGender() +
+                ",salary=" + salary +
                 '}';
     }
 }
