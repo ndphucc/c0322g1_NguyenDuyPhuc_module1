@@ -43,7 +43,7 @@ public class Main {
         int tempSearch = 0;
         System.out.println("Nhập vào tên hoặc nhà sản xuất muốn tìm: ");
         String inputSearch = scanner.nextLine();
-        for (Product item: productsList) {
+        for (Product item : productsList) {
             if (item != null) {
                 if (item.getName().contains(inputSearch) || item.getProduction().contains(inputSearch)) {
                     System.out.println(item);
@@ -92,7 +92,7 @@ public class Main {
                     int amount = Integer.parseInt(scanner.nextLine());
                     System.out.println("Nhập nhà sản xuất");
                     String production = scanner.nextLine();
-                    productsList[i] = new Product(i + 1, name, price,amount,production);
+                    productsList[i] = new Product(i + 1, name, price, amount, production);
                     System.out.println("Sửa thành công");
                     tempUpdate++;
                 }

@@ -1,7 +1,7 @@
 package CRUD.quan_li_nhan_vien_va_hoc_vien;
 
-public class Teacher extends Person{
-    private double salary= 3000000;
+public class Teacher extends Person {
+    private double salary = 3000000;
 
     public Teacher() {
     }
@@ -25,7 +25,7 @@ public class Teacher extends Person{
 
     @Override
     public String toString() {
-        return "Teacher{id=" + this.getId()+
+        return "Teacher{id=" + this.getId() +
                 ",name=" + this.getName() +
                 ",age=" + this.getAge() +
                 ",gender=" + this.getGender() +
