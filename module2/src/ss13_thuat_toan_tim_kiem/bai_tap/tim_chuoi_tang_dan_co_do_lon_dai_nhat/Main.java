@@ -18,7 +18,7 @@ public class Main {
             LinkedList<Character> list = new LinkedList<>();
             //thêm kí tự thứ i vào trong list
             list.add(string.charAt(0));
-            for (int j =  1; j < string.length(); j++) { //vòng lặp bên trong
+            for (int j = 1; j < string.length(); j++) { //vòng lặp bên trong
                 //Kiểm tra kí tự tiếp theo có lớn hơn kí tự cuối cùng trong list hay không
                 if (string.charAt(j) > list.getLast()) {
                     //Nếu có thì thêm vào trong list
