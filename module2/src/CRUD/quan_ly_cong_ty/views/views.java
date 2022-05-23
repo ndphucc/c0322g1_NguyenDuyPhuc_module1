@@ -1,6 +1,6 @@
-package CRUD.bai_tap_lon.views;
+package CRUD.quan_ly_cong_ty.views;
 
-import CRUD.bai_tap_lon.controller.ControllersArray;
+import CRUD.quan_ly_cong_ty.controller.ControllersArray;
 
 public class views {
 

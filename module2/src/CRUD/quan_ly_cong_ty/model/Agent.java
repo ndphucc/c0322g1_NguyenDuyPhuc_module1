@@ -1,4 +1,4 @@
-package CRUD.bai_tap_lon.model;
+package CRUD.quan_ly_cong_ty.model;
 
 public abstract class Agent implements Comparable<Agent> {
     private String ten;

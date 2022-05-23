@@ -1,4 +1,4 @@
-package CRUD.bai_tap_lon.model;
+package CRUD.quan_ly_cong_ty.model;
 
 public class CongNhat extends Agent {
     private double ngayCong;

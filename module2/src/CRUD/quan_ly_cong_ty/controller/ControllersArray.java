@@ -1,7 +1,7 @@
-package CRUD.bai_tap_lon.controller;
+package CRUD.quan_ly_cong_ty.controller;
 
-import CRUD.bai_tap_lon.service.LinkedListNhanVien;
-import CRUD.bai_tap_lon.service.MapNhanVien;
+import CRUD.quan_ly_cong_ty.service.LinkedListNhanVien;
+import CRUD.quan_ly_cong_ty.service.MapNhanVien;
 
 import java.util.Scanner;
 

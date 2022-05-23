@@ -1,4 +1,4 @@
-package CRUD.bai_tap_lon.service;
+package CRUD.quan_ly_cong_ty.service;
 
 public interface ChamCong {
     /**

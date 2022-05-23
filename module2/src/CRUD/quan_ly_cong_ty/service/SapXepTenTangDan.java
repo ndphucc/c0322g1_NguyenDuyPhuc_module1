@@ -1,6 +1,6 @@
-package CRUD.bai_tap_lon.service;
+package CRUD.quan_ly_cong_ty.service;
 
-import CRUD.bai_tap_lon.model.Agent;
+import CRUD.quan_ly_cong_ty.model.Agent;
 
 import java.util.Comparator;
 

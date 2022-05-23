@@ -1,9 +1,9 @@
-package CRUD.bai_tap_lon.service;
+package CRUD.quan_ly_cong_ty.service;
 
-import CRUD.bai_tap_lon.model.Agent;
-import CRUD.bai_tap_lon.model.CongNhat;
-import CRUD.bai_tap_lon.model.QuanLy;
-import CRUD.bai_tap_lon.model.SanXuat;
+import CRUD.quan_ly_cong_ty.model.Agent;
+import CRUD.quan_ly_cong_ty.model.CongNhat;
+import CRUD.quan_ly_cong_ty.model.QuanLy;
+import CRUD.quan_ly_cong_ty.model.SanXuat;
 
 public class ArrayNhanVien {
     /**
