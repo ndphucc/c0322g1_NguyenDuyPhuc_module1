@@ -12,7 +12,8 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email) {
+    public Person( int id ,String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email) {
+        this.id=id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;

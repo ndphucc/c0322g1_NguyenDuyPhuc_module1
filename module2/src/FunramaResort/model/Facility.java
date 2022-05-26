@@ -1,6 +1,7 @@
 package FunramaResort.model;
 
 public abstract class Facility {
+    private String idFacility;
     private String serviceName;
     private double usableArea;
     private double taxCosts;
@@ -10,12 +11,21 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String serviceName, double usableArea, double taxCosts, int maxPerson, String rentalType) {
+    public Facility(String idFacility,String serviceName, double usableArea, double taxCosts, int maxPerson, String rentalType) {
+        this.idFacility=idFacility;
         this.serviceName = serviceName;
         this.usableArea = usableArea;
         this.taxCosts = taxCosts;
         this.maxPerson = maxPerson;
         this.rentalType = rentalType;
+    }
+
+    public String getIdFacility() {
+        return idFacility;
+    }
+
+    public void setIdFacility(String idFacility) {
+        this.idFacility = idFacility;
     }
 
     public String getServiceName() {

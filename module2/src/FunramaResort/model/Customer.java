@@ -12,8 +12,8 @@ public class Customer extends Person{
         this.address = address;
     }
 
-    public Customer(String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email, String customerLevel, String address) {
-        super(name, dateOfBirth, gender, citizenIdentification, phoneNumber, email);
+    public Customer(int id,String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email, String customerLevel, String address) {
+        super(id,name, dateOfBirth, gender, citizenIdentification, phoneNumber, email);
         this.customerLevel = customerLevel;
         this.address = address;
     }
@@ -37,6 +37,13 @@ public class Customer extends Person{
     @Override
     public String toString() {
         return "Customer{" +
+                "id=" + super.getId() +
+                ", name='" + super.getName() + '\'' +
+                ", dateOfBirth='" + super.getDateOfBirth() + '\'' +
+                ", gender='" + super.getGender() + '\'' +
+                ", citizenIdentification='" + super.getCitizenIdentification() + '\'' +
+                ", phoneNumber='" + super.getPhoneNumber() + '\'' +
+                ", email='" + super.getEmail() + '\'' +
                 "customerLevel='" + customerLevel + '\'' +
                 ", address='" + address + '\'' +
                 '}';
