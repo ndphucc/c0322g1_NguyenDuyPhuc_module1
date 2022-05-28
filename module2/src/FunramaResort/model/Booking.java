@@ -1,30 +1,36 @@
 package FunramaResort.model;
 
 public class Booking {
-    private int bookingId;
+    private String bookingId;
     private String startDay;
     private String endDay;
     private String customerId;
-    private String serviceName;
-    private String serviceType;
+    private String facilityId;
 
     public Booking() {
     }
 
-    public Booking(int bookingId, String startDay, String endDay, String customerId, String serviceName, String serviceType) {
+    public Booking(String bookingId, String startDay, String endDay, String customerId,String facilityId) {
         this.bookingId = bookingId;
         this.startDay = startDay;
         this.endDay = endDay;
         this.customerId = customerId;
-        this.serviceName = serviceName;
-        this.serviceType = serviceType;
+        this.facilityId= facilityId;
     }
 
-    public int getBookingId() {
+    public String getFacilityId() {
+        return facilityId;
+    }
+
+    public void setFacilityId(String facilityId) {
+        this.facilityId = facilityId;
+    }
+
+    public String getBookingId() {
         return bookingId;
     }
 
-    public void setBookingId(int bookingId) {
+    public void setBookingId(String bookingId) {
         this.bookingId = bookingId;
     }
 
@@ -52,31 +58,15 @@ public class Booking {
         this.customerId = customerId;
     }
 
-    public String getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public String getServiceType() {
-        return serviceType;
-    }
-
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
-    }
 
     @Override
     public String toString() {
         return "Booking{" +
-                "bookingId=" + bookingId +
-                ", startDay='" + startDay + '\'' +
-                ", endDay='" + endDay + '\'' +
-                ", customerId='" + customerId + '\'' +
-                ", serviceName='" + serviceName + '\'' +
-                ", serviceType='" + serviceType + '\'' +
+                " bookingId = " + bookingId +
+                ", startDay = " + startDay + '\'' +
+                ", endDay = " + endDay + '\'' +
+                ", customerId = " + customerId + '\'' +
+                ",facilityId = " + facilityId + '\'' +
                 '}';
     }
 }

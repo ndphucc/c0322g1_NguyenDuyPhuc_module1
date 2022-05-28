@@ -1,8 +1,8 @@
 package FunramaResort.services.impl;
 
 import FunramaResort.model.Customer;
-import FunramaResort.model.Employee;
 import FunramaResort.services.CustomerService;
+import FunramaResort.utils.ReadAndWriteFile;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,18 +10,12 @@ import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
     static Scanner scanner = new Scanner(System.in);
+    static String CUSTOMER_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\customer.csv";
     static List<Customer> customerList = new LinkedList<>();
-
-    static {
-        customerList.add(new Customer(1, "Lê Văn Luyện", "4/2/01", "Nam", "040276545", "0876454245", "ght@gmail.com", "Diamond", "Huế"));
-        customerList.add(new Customer(2, "Lê Văn B", "4/1/03", "Nam", "040276545", "0876454245", "ght@gmail.com", "Palatinium", "Huế"));
-        customerList.add(new Customer(3, "Lê Văn L", "4/1/02", "Nam", "040276545", "0876454245", "ght@gmail.com", "Gold", "Huế"));
-        customerList.add(new Customer(4, "Lê Văn C", "4/2/02", "Nam", "040276545", "0876454245", "ght@gmail.com", "Member", "Huế"));
-        customerList.add(new Customer(5, "Trần Văn A", "4/8/02", "Nam", "040276545", "0876454245", "ght@gmail.com", "Diamond", "Huế"));
-    }
 
     @Override
     public void display() {
+        writeFile();
         for (Customer item : customerList
         ) {
             System.out.println(item);
@@ -60,7 +54,8 @@ public class CustomerServiceImpl implements CustomerService {
     public void addNew() {
         System.out.println("Nhập tên");
         String name = scanner.nextLine();
-        int id = customerList.get(customerList.size() - 1).getId() + 1;
+        System.out.println("Nhập id");
+        String id = scanner.nextLine();
         System.out.println("Nhập ngày sinh");
         String dateOfBirth = scanner.nextLine();
         System.out.println("Nhập giới tính");
@@ -74,16 +69,18 @@ public class CustomerServiceImpl implements CustomerService {
         String customerLevel = getCustomerLevel();
         System.out.println("Nhập địa chỉ");
         String address = scanner.nextLine();
+        readFile();
         customerList.add(new Customer(id, name, dateOfBirth, gender, citizenldentification, phoneNumber, email, customerLevel, address));
-
+        writeFile();
     }
 
     @Override
     public void edit() {
+        readFile();
         System.out.println("Chọn id bạn muốn sửa");
-        int id = Integer.parseInt(scanner.nextLine());
+        String id = (scanner.nextLine());
         for (Customer item : customerList) {
-            if (item.getId() == id) {
+            if (item.getId().equals(id)) {
                 System.out.println("Nhập tên");
                 String name = scanner.nextLine();
                 System.out.println("Nhập ngày sinh");
@@ -107,6 +104,7 @@ public class CustomerServiceImpl implements CustomerService {
                 item.setEmail(email);
                 item.setCustomerLevel(customerLevel);
                 item.setAddress(address);
+                writeFile();
                 return;
             }
         }
@@ -116,5 +114,29 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void remove() {
 
+    }
+
+    public void readFile() {
+        List<String[]> strings = ReadAndWriteFile.readFile(CUSTOMER_PATH);
+        customerList.clear();
+        for (String[] item : strings) {
+            customerList.add(new Customer(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8]));
+        }
+    }
+
+    public void writeFile() {
+        ReadAndWriteFile.clearFile(CUSTOMER_PATH);
+        for (Customer item : customerList) {
+            String line = item.getId() + ","
+                    + item.getName() + ","
+                    + item.getDateOfBirth() + ","
+                    + item.getGender() + ","
+                    + item.getCitizenIdentification() + ","
+                    + item.getPhoneNumber() + ","
+                    + item.getEmail() + ","
+                    + item.getCustomerLevel() + ","
+                    + item.getAddress();
+            ReadAndWriteFile.writeFile(CUSTOMER_PATH, line);
+        }
     }
 }

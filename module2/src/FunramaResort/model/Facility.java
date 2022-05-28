@@ -1,7 +1,7 @@
 package FunramaResort.model;
 
 public abstract class Facility {
-    private String idFacility;
+    private String id;
     private String serviceName;
     private double usableArea;
     private double taxCosts;
@@ -11,8 +11,8 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String idFacility,String serviceName, double usableArea, double taxCosts, int maxPerson, String rentalType) {
-        this.idFacility=idFacility;
+    public Facility(String idFacility, String serviceName, double usableArea, double taxCosts, int maxPerson, String rentalType) {
+        this.id = idFacility;
         this.serviceName = serviceName;
         this.usableArea = usableArea;
         this.taxCosts = taxCosts;
@@ -20,12 +20,12 @@ public abstract class Facility {
         this.rentalType = rentalType;
     }
 
-    public String getIdFacility() {
-        return idFacility;
+    public String getId() {
+        return id;
     }
 
-    public void setIdFacility(String idFacility) {
-        this.idFacility = idFacility;
+    public void setId(String idFacility) {
+        this.id = idFacility;
     }
 
     public String getServiceName() {
@@ -71,11 +71,12 @@ public abstract class Facility {
     @Override
     public String toString() {
         return "Facility{" +
-                "serviceName='" + serviceName + '\'' +
-                ", usableArea=" + usableArea +
-                ", taxCosts=" + taxCosts +
-                ", maxPerson=" + maxPerson +
-                ", rentalType='" + rentalType + '\'' +
+                "id = " + id +
+                "serviceName = '" + serviceName + '\'' +
+                ", usableArea = " + usableArea +
+                ", taxCost = " + taxCosts +
+                ", maxPerson = " + maxPerson +
+                ", rentalType = '" + rentalType + '\'' +
                 '}';
     }
 }

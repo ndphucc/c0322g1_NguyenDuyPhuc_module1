@@ -1,4 +1,6 @@
 package FunramaResort.services;
 
-public interface PromotionService extends Service{
+public interface PromotionService {
+    void displayCustomer();
+    void displayCustomerGetVoucher();
 }

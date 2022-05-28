@@ -5,62 +5,139 @@ import FunramaResort.model.House;
 import FunramaResort.model.Room;
 import FunramaResort.model.Villa;
 import FunramaResort.services.FacilityService;
+import FunramaResort.utils.ReadAndWriteFile;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class FacityServiceImpl implements FacilityService {
-    static Map<Facility,Integer> facilityMap = new HashMap<>();
     static Scanner scanner = new Scanner(System.in);
-    static {
-        facilityMap.put(new Villa("id dich vu 1","tên dịch vụ 1",500,567,5,"Loại cho thuê 1","tiêu chuẩn phòng 1",100,5),0);
-        facilityMap.put(new House("id dich vu 2","tên dịch vụ 2",500,567,5,"Loại cho thuê 2","tiêu chuẩn phòng 1",3),0);
-        facilityMap.put(new Room("id dich vu 3","tên dịch vụ 1",500,5,5,"tiêu chuẩn phòng 1","Dịch vụ miễn phí"),5);
-        facilityMap.put(new Villa("id dich vu 4","tên dịch vụ 3",500,567,5,"Loại cho thuê 1","tiêu chuẩn phòng 1",100,5),5);
-        facilityMap.put(new Villa("id dich vu 5","tên dịch vụ 1",500,567,5,"Loại cho thuê 1","tiêu chuẩn phòng 1",100,5),0);
-    }
+    static Map<Villa, Integer> villaList = new LinkedHashMap<>();
+    static Map<House, Integer> houseList = new LinkedHashMap<>();
+    static Map<Room, Integer> roomList = new LinkedHashMap<>();
+    static String VILLA_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\villa.csv";
+    static String HOUSE_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\house.csv";
+    static String ROOM_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\contract.csv";
 
     @Override
     public void display() {
-        Set<Facility> facilitySet = facilityMap.keySet();
-        for (Facility item: facilitySet) {
+        writeHouseFile();
+        writeRoomFile();
+        writeVillaFile();
+        Set<House> houseSet = houseList.keySet();
+        for (House item : houseSet) {
+            System.out.println(item);
+        }
+        Set<Villa> villaSet = villaList.keySet();
+        for (Villa item : villaSet) {
+            System.out.println(item);
+        }
+        Set<Room> roomSet = roomList.keySet();
+        for (Room item : roomSet) {
             System.out.println(item);
         }
     }
 
     @Override
     public void displayMaintain() {
-        Set<Facility> facilitySet = facilityMap.keySet();
-        for (Facility item: facilitySet) {
-            if (facilityMap.get(item)>4){
+        readHouseFile();
+        readRoomFile();
+        readVillaFile();
+        Set<House> houseSet = houseList.keySet();
+        for (House item : houseSet) {
+            if (houseList.get(item) >= 5) {
                 System.out.println(item);
-            };
+            }
+        }
+        Set<Villa> villaSet = villaList.keySet();
+        for (Villa item : villaSet) {
+            if (villaList.get(item) >= 5) {
+                System.out.println(item);
+            }
+        }
+        Set<Room> roomSet = roomList.keySet();
+        for (Room item : roomSet) {
+            if (roomList.get(item) >= 5) {
+                System.out.println(item);
+            }
         }
     }
 
     @Override
     public void addNewVilla() {
         System.out.println("Nhập mã dịch vụ");
-        String idFacility =scanner.nextLine();
+        String idFacility = scanner.nextLine();
         System.out.println("Nhâp tên dịch vụ");
-        String serviceName= scanner.nextLine();
+        String serviceName = scanner.nextLine();
         System.out.println("Nhập diện tích sử dụng");
-        double usableArea= Double.parseDouble(scanner.nextLine());
+        double usableArea = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập chi phí thuế");
-        double taxCosts= Double.parseDouble(scanner.nextLine());
+        double taxCosts = Double.parseDouble(scanner.nextLine());
         System.out.println("Số lượng người tối đa");
-        int maxPerson= Integer.parseInt(scanner.nextLine());
-        String rentalType= getRentalType();
+        int maxPerson = Integer.parseInt(scanner.nextLine());
+        String rentalType = getRentalType();
         System.out.println("Nhập tiêu chuẩn phòng");
-        String roomStandard= scanner.nextLine();
+        String roomStandard = scanner.nextLine();
         System.out.println("Nhập diện tích hồ bơi");
-        double poolArea= Double.parseDouble(scanner.nextLine());
+        double poolArea = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập số tầng");
-        int floorNumbers= Integer.parseInt(scanner.nextLine());
-        facilityMap.put(new Villa(idFacility,serviceName,usableArea,taxCosts,maxPerson,rentalType,roomStandard,poolArea,floorNumbers),0);
+        int floorNumbers = Integer.parseInt(scanner.nextLine());
+        villaList.put(new Villa(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, roomStandard, poolArea, floorNumbers), 0);
     }
+
+    public static void writeVillaFile() {
+        ReadAndWriteFile.clearFile(VILLA_PATH);
+        Set<Villa> villaSet = villaList.keySet();
+        for (Villa item : villaSet) {
+            String line = item.getId() + ","
+                    + item.getServiceName() + ","
+                    + item.getUsableArea() + "'"
+                    + item.getTaxCosts() + ","
+                    + item.getMaxPerson() + ","
+                    + item.getRentalType() + ","
+                    + item.getRoomStandard() + ","
+                    + item.getPoolArea() + ","
+                    + item.getFloorNumbers() + ","
+                    + villaList.get(item);
+            ReadAndWriteFile.writeFile(VILLA_PATH, line);
+        }
+    }
+
+    public static void readVillaFile() {
+        villaList.clear();
+        List<String[]> strings = ReadAndWriteFile.readFile(VILLA_PATH);
+        for (String[] item : strings
+        ) {
+            villaList.put(new Villa(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), Integer.parseInt(item[4]), item[5], item[6], Double.parseDouble(item[7]), Integer.parseInt(item[8])), Integer.parseInt(item[9]));
+
+        }
+    }
+
+    public static void writeHouseFile() {
+        ReadAndWriteFile.clearFile(HOUSE_PATH);
+        Set<House> houses = houseList.keySet();
+        for (House item : houses) {
+            String line = item.getId() + ","
+                    + item.getServiceName() + ","
+                    + item.getUsableArea() + "'"
+                    + item.getTaxCosts() + ","
+                    + item.getMaxPerson() + ","
+                    + item.getRentalType() + ","
+                    + item.getRoomStandard() + ","
+                    + item.getFloorNumbers() + ","
+                    + houseList.get(item);
+            ReadAndWriteFile.writeFile(HOUSE_PATH, line);
+        }
+    }
+
+    public static void readHouseFile() {
+        houseList.clear();
+        List<String[]> strings = ReadAndWriteFile.readFile(HOUSE_PATH);
+        for (String[] item : strings
+        ) {
+            houseList.put(new House(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), Integer.parseInt(item[4]), item[5], item[6], Integer.parseInt(item[7])), Integer.parseInt(item[8]));
+        }
+    }
+
     public String getRentalType() {
         System.out.println("Chọn kiểu thuê");
         System.out.println("1.Năm");
@@ -87,38 +164,66 @@ public class FacityServiceImpl implements FacilityService {
     @Override
     public void addNewHouse() {
         System.out.println("Nhập mã dịch vụ");
-        String idFacility =scanner.nextLine();
+        String idFacility = scanner.nextLine();
         System.out.println("Nhâp tên dịch vụ");
-        String serviceName= scanner.nextLine();
+        String serviceName = scanner.nextLine();
         System.out.println("Nhập diện tích sử dụng");
-        double usableArea= Double.parseDouble(scanner.nextLine());
+        double usableArea = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập chi phí thuế");
-        double taxCosts= Double.parseDouble(scanner.nextLine());
+        double taxCosts = Double.parseDouble(scanner.nextLine());
         System.out.println("Số lượng người tối đa");
-        int maxPerson= Integer.parseInt(scanner.nextLine());
-        String rentalType= getRentalType();
+        int maxPerson = Integer.parseInt(scanner.nextLine());
+        String rentalType = getRentalType();
         System.out.println("Nhập tiêu chuẩn phòng");
-        String roomStandard= scanner.nextLine();
+        String roomStandard = scanner.nextLine();
         System.out.println("Nhập số tầng");
-        int floorNumbers= Integer.parseInt(scanner.nextLine());
-        facilityMap.put(new House(idFacility,serviceName,usableArea,taxCosts,maxPerson,rentalType,roomStandard,floorNumbers),0);
+        int floorNumbers = Integer.parseInt(scanner.nextLine());
+        houseList.put(new House(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, roomStandard, floorNumbers), 0);
     }
 
     @Override
     public void addNewRoom() {
         System.out.println("Nhập mã dịch vụ");
-        String idFacility =scanner.nextLine();
+        String idFacility = scanner.nextLine();
         System.out.println("Nhâp tên dịch vụ");
-        String serviceName= scanner.nextLine();
+        String serviceName = scanner.nextLine();
         System.out.println("Nhập diện tích sử dụng");
-        double usableArea= Double.parseDouble(scanner.nextLine());
+        double usableArea = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập chi phí thuế");
-        double taxCosts= Double.parseDouble(scanner.nextLine());
+        double taxCosts = Double.parseDouble(scanner.nextLine());
         System.out.println("Số lượng người tối đa");
-        int maxPerson= Integer.parseInt(scanner.nextLine());
-        String rentalType= getRentalType();
+        int maxPerson = Integer.parseInt(scanner.nextLine());
+        String rentalType = getRentalType();
         System.out.println("Nhập dịch vụ miễn phí");
         String freeService = scanner.nextLine();
-        facilityMap.put(new Room(idFacility,serviceName,usableArea,taxCosts,maxPerson,rentalType,freeService),0);
+        roomList.put(new Room(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, freeService), 0);
     }
+
+    public static void writeRoomFile() {
+        ReadAndWriteFile.clearFile(ROOM_PATH);
+        Set<Room> roomSet = roomList.keySet();
+        for (Room item : roomSet) {
+            String line = item.getId() + ","
+                    + item.getServiceName() + ","
+                    + item.getUsableArea() + "'"
+                    + item.getTaxCosts() + ","
+                    + item.getMaxPerson() + ","
+                    + item.getRentalType() + ","
+                    + item.getFreeService() + ","
+                    + roomList.get(item);
+            ReadAndWriteFile.writeFile(ROOM_PATH, line);
+        }
+    }
+
+    public static void readRoomFile() {
+        roomList.clear();
+        List<String[]> strings = ReadAndWriteFile.readFile(ROOM_PATH);
+        for (String[] item : strings
+        ) {
+            roomList.put(new Room(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), Integer.parseInt(item[4]), item[5], item[6]), Integer.parseInt(item[7]));
+
+        }
+    }
+
+
 }

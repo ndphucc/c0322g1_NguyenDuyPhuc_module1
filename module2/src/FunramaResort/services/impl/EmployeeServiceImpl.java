@@ -2,6 +2,7 @@ package FunramaResort.services.impl;
 
 import FunramaResort.model.Employee;
 import FunramaResort.services.EmployeeService;
+import FunramaResort.utils.ReadAndWriteFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +11,11 @@ import java.util.Scanner;
 public class EmployeeServiceImpl implements EmployeeService {
     static Scanner sc = new Scanner(System.in);
     static List<Employee> employeeList = new ArrayList<>();
-
-    static {
-        employeeList.add(new Employee(1,"Nguyễn Duy Phúc", "4/8/02", "Nam", "040276545", "0876454245", "ght@gmail.com", "Đại học", "Quản lý", 100000));
-        employeeList.add(new Employee(2,"Nguyễn Văn A", "4/2/02", "Nam", "040276545", "0876454245", "ght@gmail.com", "Đại học", "Quản lý", 100000));
-        employeeList.add(new Employee(3,"Nguyễn Duy B", "4/8/01", "Nam", "040276545", "0876454245", "ght@gmail.com", "Đại học", "Quản lý", 100000));
-        employeeList.add(new Employee(4,"Lê Văn C", "2/2/02", "Nam", "040276545", "0876454245", "ght@gmail.com", "Đại học", "Phục vụ", 100000));
-        employeeList.add(new Employee(5,"Trương N", "25/05/02", "Nam", "040276545", "0876454245", "ght@gmail.com", "Đại học", "Giám đốc", 500000));
-
-    }
+    static String EMPLOYEE_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\employee.csv";
 
     @Override
     public void display() {
+        readFile();
         for (Employee item : employeeList) {
             if (item != null) {
                 System.out.println(item);
@@ -29,11 +23,38 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
     }
 
+    private void readFile() {
+        List<String[]> strings = ReadAndWriteFile.readFile(EMPLOYEE_PATH);
+        employeeList.clear();
+        for (String[] item : strings) {
+            employeeList.add(new Employee(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], Double.parseDouble(item[9])));
+
+        }
+    }
+    public void writeFile() {
+        ReadAndWriteFile.clearFile(EMPLOYEE_PATH);
+        for (Employee item: employeeList) {
+            String line = item.getId()+","
+                    +item.getName()+","
+                    +item.getDateOfBirth()+","
+                    +item.getGender()+","
+                    +item.getCitizenIdentification()+","
+                    +item.getPhoneNumber()+","
+                    +item.getEmail()+","
+                    +item.getLevel()+","
+                    +item.getPosition()+","
+                    +item.getSalary();
+            ReadAndWriteFile.writeFile(EMPLOYEE_PATH,line);
+        }
+    }
+
     @Override
     public void addNew() {
+        readFile();
         System.out.println("Nhập tên");
         String name = sc.nextLine();
-        int id = employeeList.get(employeeList.size()-1).getId()+1;
+        System.out.println("Nhập id");
+        String id = sc.nextLine();
         System.out.println("Nhập ngày sinh");
         String dateOfBirth = sc.nextLine();
         System.out.println("Nhập giới tính");
@@ -48,8 +69,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         String level = getLevel();
         System.out.println("Nhập lương");
         double salary = Double.parseDouble(sc.nextLine());
-        employeeList.add(new Employee(id,name, dateOfBirth, gender, citizenldentification, phoneNumber, email, level, position, salary));
-
+        employeeList.add(new Employee(id, name,dateOfBirth,gender ,citizenldentification,phoneNumber,email,position,level,salary));
+        writeFile();
     }
 
     public String getPosition() {
@@ -108,10 +129,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void edit() {
+        readFile();
         System.out.println("Chọn id bạn muốn sửa");
-        int id = Integer.parseInt(sc.nextLine());
-        for (Employee item: employeeList) {
-            if (item.getId()==id) {
+        String id = (sc.nextLine());
+        for (Employee item : employeeList) {
+            if (item.getId().equals(id)) {
                 System.out.println("Nhập tên");
                 String name = sc.nextLine();
                 System.out.println("Nhập ngày sinh");
@@ -137,6 +159,8 @@ public class EmployeeServiceImpl implements EmployeeService {
                 item.setPosition(position);
                 item.setLevel(level);
                 item.setSalary(salary);
+                ReadAndWriteFile.clearFile(EMPLOYEE_PATH);
+                writeFile();
                 return;
             }
         }

@@ -1,16 +1,16 @@
 package FunramaResort.model;
 
 public class Contract {
-    private int contractId;
+    private String contractId;
     private String bookingId;
     private double deposit;
     private double totalMoneyPayable;
-    private int customerId;
+    private String customerId;
 
     public Contract() {
     }
 
-    public Contract(int contractId, String bookingId, double deposit, double totalMoneyPayable, int customerId) {
+    public Contract(String contractId, String bookingId, double deposit, double totalMoneyPayable, String customerId) {
         this.contractId = contractId;
         this.bookingId = bookingId;
         this.deposit = deposit;
@@ -18,11 +18,11 @@ public class Contract {
         this.customerId = customerId;
     }
 
-    public int getContractId() {
+    public String getContractId() {
         return contractId;
     }
 
-    public void setContractId(int contractId) {
+    public void setContractId(String contractId) {
         this.contractId = contractId;
     }
 
@@ -50,22 +50,22 @@ public class Contract {
         this.totalMoneyPayable = totalMoneyPayable;
     }
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
     @Override
     public String toString() {
         return "Contract{" +
-                "contractId=" + contractId +
-                ", bookingId='" + bookingId + '\'' +
-                ", deposit=" + deposit +
-                ", totalMoneyPayable=" + totalMoneyPayable +
-                ", customerId=" + customerId +
+                " contractId = " + contractId +
+                ", bookingId = " + bookingId + '\'' +
+                ", deposit = " + deposit +
+                ", totalMoneyPayable = " + totalMoneyPayable +
+                ", customerId = " + customerId +
                 '}';
     }
 }

@@ -1,7 +1,7 @@
 package FunramaResort.model;
 
 public abstract class Person {
-    private int id;
+    private String id;
     private String name;
     private String dateOfBirth;
     private String gender;
@@ -12,7 +12,7 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person( int id ,String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email) {
+    public Person( String id ,String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email) {
         this.id=id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -70,24 +70,24 @@ public abstract class Person {
         this.email = email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", citizenIdentification='" + citizenIdentification + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
+                " id = " + id +
+                ", name = " + name + '\'' +
+                ", dateOfBirth = " + dateOfBirth + '\'' +
+                ", gender = " + gender + '\'' +
+                ", citizenIdentification = " + citizenIdentification + '\'' +
+                ", phoneNumber = " + phoneNumber + '\'' +
+                ", email = " + email + '\'' +
                 '}';
     }
 }
