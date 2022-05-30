@@ -15,7 +15,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void display() {
-        writeFile();
+        readFile();
         for (Customer item : customerList
         ) {
             System.out.println(item);
@@ -116,7 +116,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
-    public void readFile() {
+    public static void readFile() {
         List<String[]> strings = ReadAndWriteFile.readFile(CUSTOMER_PATH);
         customerList.clear();
         for (String[] item : strings) {
@@ -124,7 +124,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
-    public void writeFile() {
+    public static void writeFile() {
         ReadAndWriteFile.clearFile(CUSTOMER_PATH);
         for (Customer item : customerList) {
             String line = item.getId() + ","
@@ -139,4 +139,5 @@ public class CustomerServiceImpl implements CustomerService {
             ReadAndWriteFile.writeFile(CUSTOMER_PATH, line);
         }
     }
+
 }

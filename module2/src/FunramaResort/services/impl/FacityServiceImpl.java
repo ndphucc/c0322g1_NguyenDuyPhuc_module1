@@ -18,11 +18,12 @@ public class FacityServiceImpl implements FacilityService {
     static String HOUSE_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\house.csv";
     static String ROOM_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\contract.csv";
 
+
     @Override
     public void display() {
-        writeHouseFile();
-        writeRoomFile();
-        writeVillaFile();
+        readVillaFile();
+        readHouseFile();
+        readRoomFile();
         Set<House> houseSet = houseList.keySet();
         for (House item : houseSet) {
             System.out.println(item);
@@ -64,6 +65,7 @@ public class FacityServiceImpl implements FacilityService {
 
     @Override
     public void addNewVilla() {
+        readVillaFile();
         System.out.println("Nhập mã dịch vụ");
         String idFacility = scanner.nextLine();
         System.out.println("Nhâp tên dịch vụ");
@@ -82,6 +84,7 @@ public class FacityServiceImpl implements FacilityService {
         System.out.println("Nhập số tầng");
         int floorNumbers = Integer.parseInt(scanner.nextLine());
         villaList.put(new Villa(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, roomStandard, poolArea, floorNumbers), 0);
+        writeVillaFile();
     }
 
     public static void writeVillaFile() {
@@ -90,7 +93,7 @@ public class FacityServiceImpl implements FacilityService {
         for (Villa item : villaSet) {
             String line = item.getId() + ","
                     + item.getServiceName() + ","
-                    + item.getUsableArea() + "'"
+                    + item.getUsableArea() + ","
                     + item.getTaxCosts() + ","
                     + item.getMaxPerson() + ","
                     + item.getRentalType() + ","
@@ -118,7 +121,7 @@ public class FacityServiceImpl implements FacilityService {
         for (House item : houses) {
             String line = item.getId() + ","
                     + item.getServiceName() + ","
-                    + item.getUsableArea() + "'"
+                    + item.getUsableArea() + ","
                     + item.getTaxCosts() + ","
                     + item.getMaxPerson() + ","
                     + item.getRentalType() + ","
@@ -134,6 +137,7 @@ public class FacityServiceImpl implements FacilityService {
         List<String[]> strings = ReadAndWriteFile.readFile(HOUSE_PATH);
         for (String[] item : strings
         ) {
+            if (item.length==9)
             houseList.put(new House(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), Integer.parseInt(item[4]), item[5], item[6], Integer.parseInt(item[7])), Integer.parseInt(item[8]));
         }
     }
@@ -163,6 +167,7 @@ public class FacityServiceImpl implements FacilityService {
 
     @Override
     public void addNewHouse() {
+        readHouseFile();
         System.out.println("Nhập mã dịch vụ");
         String idFacility = scanner.nextLine();
         System.out.println("Nhâp tên dịch vụ");
@@ -179,10 +184,12 @@ public class FacityServiceImpl implements FacilityService {
         System.out.println("Nhập số tầng");
         int floorNumbers = Integer.parseInt(scanner.nextLine());
         houseList.put(new House(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, roomStandard, floorNumbers), 0);
+        writeHouseFile();
     }
 
     @Override
     public void addNewRoom() {
+        readRoomFile();
         System.out.println("Nhập mã dịch vụ");
         String idFacility = scanner.nextLine();
         System.out.println("Nhâp tên dịch vụ");
@@ -197,6 +204,7 @@ public class FacityServiceImpl implements FacilityService {
         System.out.println("Nhập dịch vụ miễn phí");
         String freeService = scanner.nextLine();
         roomList.put(new Room(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, freeService), 0);
+        writeRoomFile();
     }
 
     public static void writeRoomFile() {
@@ -218,12 +226,8 @@ public class FacityServiceImpl implements FacilityService {
     public static void readRoomFile() {
         roomList.clear();
         List<String[]> strings = ReadAndWriteFile.readFile(ROOM_PATH);
-        for (String[] item : strings
-        ) {
+        for (String[] item : strings) {
             roomList.put(new Room(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), Integer.parseInt(item[4]), item[5], item[6]), Integer.parseInt(item[7]));
-
         }
     }
-
-
 }

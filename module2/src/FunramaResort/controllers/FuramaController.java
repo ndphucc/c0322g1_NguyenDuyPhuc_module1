@@ -1,10 +1,7 @@
 package FunramaResort.controllers;
 
 
-import FunramaResort.services.impl.BookingServiceImpl;
-import FunramaResort.services.impl.CustomerServiceImpl;
-import FunramaResort.services.impl.EmployeeServiceImpl;
-import FunramaResort.services.impl.FacityServiceImpl;
+import FunramaResort.services.impl.*;
 
 import java.util.Scanner;
 
@@ -131,6 +128,17 @@ public class FuramaController {
         System.out.println("1.Display list customers use service");
         System.out.println("2.Display list customers get voucher");
         System.out.println("3.Return main menu");
+        int choose = Integer.parseInt(scanner.nextLine());
+        switch (choose) {
+            case 1:
+                new PromotionServiceImpl().displayCustomer();
+                break;
+            case 2:
+                new PromotionServiceImpl().displayCustomerGetVoucher();
+                break;
+            case 3:
+                displayMainMenu();
+        }
     }
 
     public static void displayAddNewFacility() {

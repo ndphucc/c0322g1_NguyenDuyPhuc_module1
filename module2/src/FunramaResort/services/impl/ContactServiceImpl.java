@@ -1,20 +1,23 @@
 package FunramaResort.services.impl;
 
-
 import FunramaResort.model.Booking;
 import FunramaResort.model.Contract;
 import FunramaResort.services.ContactService;
+import FunramaResort.utils.ReadAndWriteFile;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 
 public class ContactServiceImpl implements ContactService {
     static Queue<Booking> bookingContractQueue = new LinkedList();
-    LinkedList<Contract> contractLinkedList = new LinkedList<>();
+    static LinkedList<Contract> contractLinkedList = new LinkedList<>();
     static Scanner scanner = new Scanner(System.in);
+    static final String CONTACT_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\contract.csv";
 
     static {
+        BookingServiceImpl.readBooking();
         for (Booking item : BookingServiceImpl.bookingSet) {
             bookingContractQueue.add(item);
             BookingServiceImpl.bookingSet.remove(item);
@@ -23,6 +26,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void display() {
+        readContactFile();
         for (Booking item : bookingContractQueue
         ) {
             System.out.println(item);
@@ -31,6 +35,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void addNew() {
+        readContactFile();
         System.out.println("Mã booking = " + bookingContractQueue.peek().getBookingId());
         System.out.println("Mã khách hàng = " + bookingContractQueue.peek().getCustomerId());
         System.out.println("Nhập mã hợp đồng thuê");
@@ -39,14 +44,26 @@ public class ContactServiceImpl implements ContactService {
         Double deposit = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập tổng số tiền thanh toán ");
         double totalMoneyPayable = Double.parseDouble(scanner.nextLine());
-        contractLinkedList.add(new Contract(id, bookingContractQueue.peek().getBookingId(), deposit, totalMoneyPayable, bookingContractQueue.peek().getCustomerId()));
-        bookingContractQueue.remove();
+        contractLinkedList.add(new Contract(id, bookingContractQueue.peek().getBookingId(), deposit, totalMoneyPayable, bookingContractQueue.poll().getCustomerId()));
         System.out.println("Bạn đã thêm thành công");
+        writeContactFile();
+    }
+
+    public static void writeContactFile() {
+        for (Contract item : contractLinkedList) {
+            String line = item.getContractId() + ","
+                    + item.getBookingId() + ","
+                    + item.getDeposit() + ","
+                    + item.getTotalMoneyPayable() + ","
+                    + item.getCustomerId();
+            ReadAndWriteFile.writeFile(CONTACT_PATH, line);
+        }
     }
 
     @Override
     public void edit() {
-        System.out.println("Nhập id bạn muốn xóa");
+        readContactFile();
+        System.out.println("Nhập id bạn muốn sửa");
         String id = scanner.nextLine();
         boolean flag = true;
         do {
@@ -66,6 +83,7 @@ public class ContactServiceImpl implements ContactService {
                     item.setDeposit(deposit);
                     item.setTotalMoneyPayable(totalMoneyPayable);
                     System.out.println("Đã sữa thành công");
+                    writeContactFile();
                 }
             }
             if (flag) {
@@ -73,13 +91,15 @@ public class ContactServiceImpl implements ContactService {
                 id = scanner.nextLine();
             }
         } while (flag);
-        for (Contract item : contractLinkedList
-        ) {
-            if (id.equals(item.getContractId())) {
+    }
 
-            }
+    public static void readContactFile() {
+        List<String[]> strings = ReadAndWriteFile.readFile(CONTACT_PATH);
+        for (String[] item : strings) {
+            contractLinkedList.add(new Contract(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), item[4]));
         }
     }
+
 
     @Override
     public void remove() {

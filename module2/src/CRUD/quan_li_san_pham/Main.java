@@ -4,22 +4,22 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
-    public static Product[] productsList = new Product[100];
+    public static CustomerServiceImpl[] productsList = new CustomerServiceImpl[100];
 
     public static int count;
 
 
     static {
-        productsList[0] = new Product(1, "Iphone", 1000, 10, "America");
-        productsList[1] = new Product(2, "Xiaomi", 1000, 10, "China");
-        productsList[2] = new Product(3, "Dell", 1000, 10, "China");
-        productsList[3] = new Product(4, "Mac", 1000, 10, "America");
-        productsList[4] = new Product(5, "Iphone", 1000, 10, "America");
+        productsList[0] = new CustomerServiceImpl(1, "Iphone", 1000, 10, "America");
+        productsList[1] = new CustomerServiceImpl(2, "Xiaomi", 1000, 10, "China");
+        productsList[2] = new CustomerServiceImpl(3, "Dell", 1000, 10, "China");
+        productsList[3] = new CustomerServiceImpl(4, "Mac", 1000, 10, "America");
+        productsList[4] = new CustomerServiceImpl(5, "Iphone", 1000, 10, "America");
         count = 5;
     }
 
     public static void displayProduct() {
-        for (Product item : productsList) {
+        for (CustomerServiceImpl item : productsList) {
             if (item != null) {
                 System.out.println(item);
             }
@@ -35,7 +35,7 @@ public class Main {
         int amount = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập nhà sản xuất");
         String production = scanner.nextLine();
-        productsList[count] = new Product(count + 1, name, price, amount, production);
+        productsList[count] = new CustomerServiceImpl(count + 1, name, price, amount, production);
         System.out.println("Add new success");
     }
 
@@ -43,7 +43,7 @@ public class Main {
         int tempSearch = 0;
         System.out.println("Nhập vào tên hoặc nhà sản xuất muốn tìm: ");
         String inputSearch = scanner.nextLine();
-        for (Product item : productsList) {
+        for (CustomerServiceImpl item : productsList) {
             if (item != null) {
                 if (item.getName().contains(inputSearch) || item.getProduction().contains(inputSearch)) {
                     System.out.println(item);
@@ -92,7 +92,7 @@ public class Main {
                     int amount = Integer.parseInt(scanner.nextLine());
                     System.out.println("Nhập nhà sản xuất");
                     String production = scanner.nextLine();
-                    productsList[i] = new Product(i + 1, name, price, amount, production);
+                    productsList[i] = new CustomerServiceImpl(i + 1, name, price, amount, production);
                     System.out.println("Sửa thành công");
                     tempUpdate++;
                 }
@@ -105,7 +105,7 @@ public class Main {
 
     public static void main(String[] args) {
         do {
-            System.out.println("----------Product Management------------");
+            System.out.println("----------CustomerServiceImpl Management------------");
             System.out.println("1. Display list product");
             System.out.println("2. Add new product");
             System.out.println("3. Search product");

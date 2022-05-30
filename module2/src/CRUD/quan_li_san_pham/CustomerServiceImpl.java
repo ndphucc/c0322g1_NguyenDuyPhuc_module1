@@ -1,16 +1,16 @@
 package CRUD.quan_li_san_pham;
 
-public class Product {
+public class CustomerServiceImpl {
     private int id;
     private String name;
     private double price;
     private int amount;
     private String production;
 
-    public Product() {
+    public CustomerServiceImpl() {
     }
 
-    public Product(int id, String name, double price, int amount, String production) {
+    public CustomerServiceImpl(int id, String name, double price, int amount, String production) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -60,7 +60,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "CustomerServiceImpl{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +

@@ -40,7 +40,7 @@ public class Product implements Comparable<Product> {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "CustomerServiceImpl{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
