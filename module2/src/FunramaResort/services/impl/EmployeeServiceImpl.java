@@ -53,8 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         readFile();
         System.out.println("Nhập tên");
         String name = sc.nextLine();
-        System.out.println("Nhập id");
-        String id = sc.nextLine();
+        String id = ""+Integer.parseInt(employeeList.get(employeeList.size()-1).getId())+1;
         System.out.println("Nhập ngày sinh");
         String dateOfBirth = sc.nextLine();
         System.out.println("Nhập giới tính");

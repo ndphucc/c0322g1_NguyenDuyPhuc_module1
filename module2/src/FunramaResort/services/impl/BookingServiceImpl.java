@@ -18,8 +18,7 @@ public class BookingServiceImpl implements BookingService {
         String customerId = chooseCustomer().getId();
         Facility facility = chooseFacility();
         String facilityId = facility.getId();
-        System.out.println("Nhập id");
-        String bookingId = scanner.nextLine();
+        String bookingId = ""+findID();
         System.out.println("Nhập ngày bắt đầu ");
         String startDay = scanner.nextLine();
         System.out.println("Nhập ngày kết thúc");
@@ -79,24 +78,24 @@ public class BookingServiceImpl implements BookingService {
 
     public static Facility chooseFacility() {
         System.out.println("Danh sach dich vu");
-        new FacityServiceImpl().display();
+        new FacilityServiceImpl().display();
         System.out.println("Nhập id dịch vụ");
         boolean check = true;
         String id = (scanner.nextLine());
         while (check) {
-            Set<House> houseSet = FacityServiceImpl.houseList.keySet();
+            Set<House> houseSet = FacilityServiceImpl.houseList.keySet();
             for (House item : houseSet) {
                 if (item.getId().equals(id)) {
                     return item;
                 }
             }
-            Set<Villa> villaSet = FacityServiceImpl.villaList.keySet();
+            Set<Villa> villaSet = FacilityServiceImpl.villaList.keySet();
             for (Villa item : villaSet) {
                 if (item.getId().equals(id)) {
                     return item;
                 }
             }
-            Set<Room> roomSet = FacityServiceImpl.roomList.keySet();
+            Set<Room> roomSet = FacilityServiceImpl.roomList.keySet();
             for (Room item : roomSet) {
                 if (item.getId().equals(id)) {
                     return item;
@@ -111,43 +110,52 @@ public class BookingServiceImpl implements BookingService {
     }
     public static void setValueBooking(Object obj) {
         if (obj instanceof Villa) {
-            FacityServiceImpl.readVillaFile();
-            Set<Villa> villaSet = FacityServiceImpl.villaList.keySet();
+            FacilityServiceImpl.readVillaFile();
+            Set<Villa> villaSet = FacilityServiceImpl.villaList.keySet();
             for (Villa item: villaSet) {
                 if (((Villa) obj).getId().equals(item.getId())) {
-                    int value = FacityServiceImpl.villaList.get(item);
-                    FacityServiceImpl.villaList.remove(item);
-                    FacityServiceImpl.villaList.put(item,value+1);
-                    FacityServiceImpl.writeVillaFile();
+                    int value = FacilityServiceImpl.villaList.get(item);
+                    FacilityServiceImpl.villaList.remove(item);
+                    FacilityServiceImpl.villaList.put(item,value+1);
+                    FacilityServiceImpl.writeVillaFile();
                     return;
                 }
             }
         }
         else if (obj instanceof House) {
-            FacityServiceImpl.readHouseFile();
-            Set<House> houseSet = FacityServiceImpl.houseList.keySet();
+            FacilityServiceImpl.readHouseFile();
+            Set<House> houseSet = FacilityServiceImpl.houseList.keySet();
             for (House item: houseSet) {
                 if (((House) obj).getId().equals(item.getId())) {
-                    int value = FacityServiceImpl.houseList.get(item);
-                    FacityServiceImpl.houseList.remove(item);
-                    FacityServiceImpl.houseList.put(item,value+1);
-                    FacityServiceImpl.writeHouseFile();
+                    int value = FacilityServiceImpl.houseList.get(item);
+                    FacilityServiceImpl.houseList.remove(item);
+                    FacilityServiceImpl.houseList.put(item,value+1);
+                    FacilityServiceImpl.writeHouseFile();
                     return;
                 }
             }
         }
         else  {
-            FacityServiceImpl.readRoomFile();
-            Set<Room> roomSet = FacityServiceImpl.roomList.keySet();
+            FacilityServiceImpl.readRoomFile();
+            Set<Room> roomSet = FacilityServiceImpl.roomList.keySet();
             for (Room item: roomSet) {
                 if (((Room) obj).getId().equals(item.getId())) {
-                    int value = FacityServiceImpl.roomList.get(item);
-                    FacityServiceImpl.roomList.remove(item);
-                    FacityServiceImpl.roomList.put(item,value+1);
-                    FacityServiceImpl.writeRoomFile();
+                    int value = FacilityServiceImpl.roomList.get(item);
+                    FacilityServiceImpl.roomList.remove(item);
+                    FacilityServiceImpl.roomList.put(item,value+1);
+                    FacilityServiceImpl.writeRoomFile();
                     return;
                 }
             }
         }
+    }
+    public int findID() {
+        int id = 0;
+        for (Booking booking: bookingSet) {
+            if (id<Integer.parseInt(booking.getBookingId())) {
+                id=Integer.parseInt(booking.getBookingId());
+            }
+        }
+        return id+1;
     }
 }

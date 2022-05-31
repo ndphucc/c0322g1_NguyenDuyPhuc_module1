@@ -19,16 +19,16 @@ public class PromotionServiceImpl implements PromotionService {
         System.out.println("Nhập năm bạn muốn hiển thị");
         String year = scanner.nextLine();
         BookingServiceImpl.readBooking();
-        FacityServiceImpl.readVillaFile();
-        FacityServiceImpl.readHouseFile();
+        FacilityServiceImpl.readVillaFile();
+        FacilityServiceImpl.readHouseFile();
         for (Booking item : BookingServiceImpl.bookingSet) {
-            Set<Villa> villaSet = FacityServiceImpl.villaList.keySet();
+            Set<Villa> villaSet = FacilityServiceImpl.villaList.keySet();
             for (Villa villa : villaSet) {
                 if (item.getFacilityId().equals(villa.getId()) && GetTime.getYearBooking(item.getStartDay()).equals(year) && villa.getRentalType().equals("Năm")) {
                     System.out.println(item);
                 }
             }
-            Set<House> houseSet = FacityServiceImpl.houseList.keySet();
+            Set<House> houseSet = FacilityServiceImpl.houseList.keySet();
             for (House house : houseSet) {
                 if (item.getFacilityId().equals(house.getId()) && GetTime.getYearBooking(item.getStartDay()).equals(year) && house.getRentalType().equals("Năm")) {
                     System.out.println(item);

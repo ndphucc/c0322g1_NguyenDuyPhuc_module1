@@ -1,22 +1,22 @@
 package FunramaResort.services.impl;
 
-import FunramaResort.model.Facility;
 import FunramaResort.model.House;
 import FunramaResort.model.Room;
 import FunramaResort.model.Villa;
 import FunramaResort.services.FacilityService;
 import FunramaResort.utils.ReadAndWriteFile;
+import FunramaResort.utils.Regex;
 
 import java.util.*;
 
-public class FacityServiceImpl implements FacilityService {
+public class FacilityServiceImpl implements FacilityService {
     static Scanner scanner = new Scanner(System.in);
     static Map<Villa, Integer> villaList = new LinkedHashMap<>();
     static Map<House, Integer> houseList = new LinkedHashMap<>();
     static Map<Room, Integer> roomList = new LinkedHashMap<>();
     static String VILLA_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\villa.csv";
     static String HOUSE_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\house.csv";
-    static String ROOM_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\contract.csv";
+    static String ROOM_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\room.csv";
 
 
     @Override
@@ -66,10 +66,16 @@ public class FacityServiceImpl implements FacilityService {
     @Override
     public void addNewVilla() {
         readVillaFile();
-        System.out.println("Nhập mã dịch vụ");
-        String idFacility = scanner.nextLine();
-        System.out.println("Nhâp tên dịch vụ");
-        String serviceName = scanner.nextLine();
+        String idFacility = "";
+        do {
+            System.out.println("Nhập mã dịch vụ");
+            idFacility = scanner.nextLine();
+            if (Regex.regexVillaId(idFacility)) {
+                break;
+            }
+            System.out.println("Mã dịch vụ không hợp lệ");
+        } while (true);
+        String serviceName = getServiceName();
         System.out.println("Nhập diện tích sử dụng");
         double usableArea = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập chi phí thuế");
@@ -137,8 +143,8 @@ public class FacityServiceImpl implements FacilityService {
         List<String[]> strings = ReadAndWriteFile.readFile(HOUSE_PATH);
         for (String[] item : strings
         ) {
-            if (item.length==9)
-            houseList.put(new House(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), Integer.parseInt(item[4]), item[5], item[6], Integer.parseInt(item[7])), Integer.parseInt(item[8]));
+            if (item.length == 9)
+                houseList.put(new House(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), Integer.parseInt(item[4]), item[5], item[6], Integer.parseInt(item[7])), Integer.parseInt(item[8]));
         }
     }
 
@@ -168,10 +174,16 @@ public class FacityServiceImpl implements FacilityService {
     @Override
     public void addNewHouse() {
         readHouseFile();
-        System.out.println("Nhập mã dịch vụ");
-        String idFacility = scanner.nextLine();
-        System.out.println("Nhâp tên dịch vụ");
-        String serviceName = scanner.nextLine();
+        String idFacility = "";
+        do {
+            System.out.println("Nhập mã dịch vụ");
+            idFacility = scanner.nextLine();
+            if (Regex.regexHouseId(idFacility)) {
+                break;
+            }
+            System.out.println("Mã dịch vụ không hợp lệ");
+        } while (true);
+        String serviceName = getServiceName();
         System.out.println("Nhập diện tích sử dụng");
         double usableArea = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập chi phí thuế");
@@ -187,13 +199,23 @@ public class FacityServiceImpl implements FacilityService {
         writeHouseFile();
     }
 
+    public static void main(String[] args) {
+        new FacilityServiceImpl().addNewRoom();
+    }
+
     @Override
     public void addNewRoom() {
         readRoomFile();
-        System.out.println("Nhập mã dịch vụ");
-        String idFacility = scanner.nextLine();
-        System.out.println("Nhâp tên dịch vụ");
-        String serviceName = scanner.nextLine();
+        String idFacility = "";
+        do {
+            System.out.println("Nhập mã dịch vụ");
+            idFacility = scanner.nextLine();
+            if (Regex.regexRoomId(idFacility)) {
+                break;
+            }
+            System.out.println("Mã dịch vụ không hợp lệ");
+        } while (true);
+        String serviceName = getServiceName();
         System.out.println("Nhập diện tích sử dụng");
         double usableArea = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập chi phí thuế");
@@ -213,7 +235,7 @@ public class FacityServiceImpl implements FacilityService {
         for (Room item : roomSet) {
             String line = item.getId() + ","
                     + item.getServiceName() + ","
-                    + item.getUsableArea() + "'"
+                    + item.getUsableArea() + ","
                     + item.getTaxCosts() + ","
                     + item.getMaxPerson() + ","
                     + item.getRentalType() + ","
@@ -229,5 +251,18 @@ public class FacityServiceImpl implements FacilityService {
         for (String[] item : strings) {
             roomList.put(new Room(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), Integer.parseInt(item[4]), item[5], item[6]), Integer.parseInt(item[7]));
         }
+    }
+
+    public static String getServiceName() {
+        String serviceName = "";
+        do {
+            System.out.println("Nhâp tên dịch vụ");
+            serviceName = scanner.nextLine();
+            if (Regex.regexServiceName(serviceName)) {
+                break;
+            }
+            System.out.println("Nhập ko hợp lệ");
+        } while (true);
+        return serviceName;
     }
 }

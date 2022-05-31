@@ -88,13 +88,13 @@ public class FuramaController {
         int choose = Integer.parseInt(scanner.nextLine());
         switch (choose) {
             case 1:
-                new FacityServiceImpl().display();
+                new FacilityServiceImpl().display();
                 break;
             case 2:
                 displayAddNewFacility();
                 break;
             case 3:
-                new FacityServiceImpl().displayMaintain();
+                new FacilityServiceImpl().displayMaintain();
                 break;
             case 4:
                 displayMainMenu();
@@ -106,8 +106,8 @@ public class FuramaController {
         System.out.println("2.Display list booking");
         System.out.println("3.Create new constracts");
         System.out.println("4.Display list contracts");
-        System.out.println("5.Edit contracts");
-        System.out.println("6.Return main menu");
+//        System.out.println("5.Edit contracts");
+        System.out.println("5.Return main menu");
         int choose = Integer.parseInt(scanner.nextLine());
         switch (choose) {
             case 1:
@@ -117,9 +117,12 @@ public class FuramaController {
                 new BookingServiceImpl().displayListBooking();
                 break;
             case 3:
-                new FacityServiceImpl().displayMaintain();
+                new ContactServiceImpl().addNew();
                 break;
             case 4:
+                new ContactServiceImpl().display();
+                break;
+            case 5:
                 displayMainMenu();
         }
     }
@@ -149,13 +152,13 @@ public class FuramaController {
         int choose = Integer.parseInt(scanner.nextLine());
         switch (choose) {
             case 1:
-                new FacityServiceImpl().addNewVilla();
+                new FacilityServiceImpl().addNewVilla();
                 break;
             case 2:
-                new FacityServiceImpl().addNewHouse();
+                new FacilityServiceImpl().addNewHouse();
                 break;
             case 3:
-                new FacityServiceImpl().addNewRoom();
+                new FacilityServiceImpl().addNewRoom();
                 break;
             case 4:
                 displayFacilityManagement();

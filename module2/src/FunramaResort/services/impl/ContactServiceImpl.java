@@ -96,10 +96,10 @@ public class ContactServiceImpl implements ContactService {
     public static void readContactFile() {
         List<String[]> strings = ReadAndWriteFile.readFile(CONTACT_PATH);
         for (String[] item : strings) {
-            contractLinkedList.add(new Contract(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), item[4]));
+            if (item.length == 9)
+                contractLinkedList.add(new Contract(item[0], item[1], Double.parseDouble(item[2]), Double.parseDouble(item[3]), item[4]));
         }
     }
-
 
     @Override
     public void remove() {
