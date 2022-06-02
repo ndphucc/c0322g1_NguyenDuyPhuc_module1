@@ -2,6 +2,7 @@ package FunramaResort.services.impl;
 
 import FunramaResort.model.Customer;
 import FunramaResort.services.CustomerService;
+import FunramaResort.utils.GetTime;
 import FunramaResort.utils.ReadAndWriteFile;
 
 import java.util.LinkedList;
@@ -54,9 +55,8 @@ public class CustomerServiceImpl implements CustomerService {
     public void addNew() {
         System.out.println("Nhập tên");
         String name = scanner.nextLine();
-        String id = ""+Integer.parseInt(customerList.get(customerList.size()-1).getId())+1;
-        System.out.println("Nhập ngày sinh");
-        String dateOfBirth = scanner.nextLine();
+        String id = "" + Integer.parseInt(customerList.get(customerList.size() - 1).getId()) + 1;
+        String dateOfBirth = GetTime.getDateOfBirth();
         System.out.println("Nhập giới tính");
         String gender = scanner.nextLine();
         System.out.println("Nhập số cccd");
@@ -82,8 +82,7 @@ public class CustomerServiceImpl implements CustomerService {
             if (item.getId().equals(id)) {
                 System.out.println("Nhập tên");
                 String name = scanner.nextLine();
-                System.out.println("Nhập ngày sinh");
-                String dateOfBirth = scanner.nextLine();
+                String dateOfBirth = GetTime.getDateOfBirth();
                 System.out.println("Nhập giới tính");
                 String gender = scanner.nextLine();
                 System.out.println("Nhập số cccd");
@@ -108,11 +107,6 @@ public class CustomerServiceImpl implements CustomerService {
             }
         }
         System.out.println("id không tồn tại");
-    }
-
-    @Override
-    public void remove() {
-
     }
 
     public static void readFile() {

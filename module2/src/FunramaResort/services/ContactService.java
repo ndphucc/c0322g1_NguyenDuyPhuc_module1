@@ -1,4 +1,4 @@
 package FunramaResort.services;
 
-public interface ContactService extends Service{
+public interface ContactService extends Service {
 }

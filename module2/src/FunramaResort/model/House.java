@@ -1,6 +1,6 @@
 package FunramaResort.model;
 
-public class House extends Facility{
+public class House extends Facility {
     private String roomStandard;
     private int floorNumbers;
 
@@ -13,7 +13,7 @@ public class House extends Facility{
     }
 
     public House(String idFacility, String serviceName, double usableArea, double taxCosts, int maxPerson, String rentalType, String roomStandard, int floorNumbers) {
-        super(idFacility,serviceName, usableArea, taxCosts, maxPerson, rentalType);
+        super(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType);
         this.roomStandard = roomStandard;
         this.floorNumbers = floorNumbers;
     }
@@ -37,7 +37,7 @@ public class House extends Facility{
     @Override
     public String toString() {
         return "House{" +
-                "idFacility"+ super.getId()+
+                "idFacility" + super.getId() +
                 " serviceName = " + super.getServiceName() + '\'' +
                 ", usableArea = " + super.getUsableArea() +
                 ", taxCosts = " + super.getTaxCosts() +

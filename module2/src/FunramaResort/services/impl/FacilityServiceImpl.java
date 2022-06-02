@@ -1,5 +1,9 @@
 package FunramaResort.services.impl;
 
+import FunramaResort.exception.InvalidHouseException;
+import FunramaResort.exception.InvalidIdVillaException;
+import FunramaResort.exception.InvalidRoomException;
+import FunramaResort.libs.UserException;
 import FunramaResort.model.House;
 import FunramaResort.model.Room;
 import FunramaResort.model.Villa;
@@ -66,25 +70,13 @@ public class FacilityServiceImpl implements FacilityService {
     @Override
     public void addNewVilla() {
         readVillaFile();
-        String idFacility = "";
-        do {
-            System.out.println("Nhập mã dịch vụ");
-            idFacility = scanner.nextLine();
-            if (Regex.regexVillaId(idFacility)) {
-                break;
-            }
-            System.out.println("Mã dịch vụ không hợp lệ");
-        } while (true);
+        String idFacility=getIdFacility(new Villa());
         String serviceName = getServiceName();
-        System.out.println("Nhập diện tích sử dụng");
-        double usableArea = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhập chi phí thuế");
-        double taxCosts = Double.parseDouble(scanner.nextLine());
-        System.out.println("Số lượng người tối đa");
-        int maxPerson = Integer.parseInt(scanner.nextLine());
+        double usableArea = getArea();
+        double taxCosts = getTaxCosts();
+        int maxPerson = getMaxPerson();
         String rentalType = getRentalType();
-        System.out.println("Nhập tiêu chuẩn phòng");
-        String roomStandard = scanner.nextLine();
+        String roomStandard = getRoomStandard();
         System.out.println("Nhập diện tích hồ bơi");
         double poolArea = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập số tầng");
@@ -154,74 +146,47 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("2.Tháng");
         System.out.println("3.Ngày");
         System.out.println("4.Giờ");
-        int choose = Integer.parseInt(scanner.nextLine());
-        switch (choose) {
-            case 1:
-                return "Năm";
-            case 2:
-                return "Tháng";
-            case 3:
-                return "Ngày";
-            case 4:
-                return "Giờ";
-            default:
-                System.out.println("Không hợp lệ");
-                getRentalType();
-        }
-        return "";
+        String choose = scanner.nextLine();
+        do {
+            switch (choose) {
+                case "1":
+                    return "Năm";
+                case "2":
+                    return "Tháng";
+                case "3":
+                    return "Ngày";
+                case "4":
+                    return "Giờ";
+                default:
+                    System.out.println("Không hợp lệ");
+            }
+        } while (true);
     }
 
     @Override
     public void addNewHouse() {
         readHouseFile();
-        String idFacility = "";
-        do {
-            System.out.println("Nhập mã dịch vụ");
-            idFacility = scanner.nextLine();
-            if (Regex.regexHouseId(idFacility)) {
-                break;
-            }
-            System.out.println("Mã dịch vụ không hợp lệ");
-        } while (true);
+        String idFacility = getIdFacility(new House());
         String serviceName = getServiceName();
-        System.out.println("Nhập diện tích sử dụng");
-        double usableArea = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhập chi phí thuế");
-        double taxCosts = Double.parseDouble(scanner.nextLine());
-        System.out.println("Số lượng người tối đa");
-        int maxPerson = Integer.parseInt(scanner.nextLine());
+        double usableArea = getArea();
+        double taxCosts = getTaxCosts();
+        int maxPerson = getMaxPerson();
         String rentalType = getRentalType();
-        System.out.println("Nhập tiêu chuẩn phòng");
-        String roomStandard = scanner.nextLine();
+        String roomStandard = getRoomStandard();
         System.out.println("Nhập số tầng");
         int floorNumbers = Integer.parseInt(scanner.nextLine());
         houseList.put(new House(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, roomStandard, floorNumbers), 0);
         writeHouseFile();
     }
 
-    public static void main(String[] args) {
-        new FacilityServiceImpl().addNewRoom();
-    }
-
     @Override
     public void addNewRoom() {
         readRoomFile();
-        String idFacility = "";
-        do {
-            System.out.println("Nhập mã dịch vụ");
-            idFacility = scanner.nextLine();
-            if (Regex.regexRoomId(idFacility)) {
-                break;
-            }
-            System.out.println("Mã dịch vụ không hợp lệ");
-        } while (true);
+        String idFacility= getIdFacility(new Room());
         String serviceName = getServiceName();
-        System.out.println("Nhập diện tích sử dụng");
-        double usableArea = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhập chi phí thuế");
-        double taxCosts = Double.parseDouble(scanner.nextLine());
-        System.out.println("Số lượng người tối đa");
-        int maxPerson = Integer.parseInt(scanner.nextLine());
+        double usableArea = getArea();
+        double taxCosts = getTaxCosts();
+        int maxPerson = getMaxPerson();
         String rentalType = getRentalType();
         System.out.println("Nhập dịch vụ miễn phí");
         String freeService = scanner.nextLine();
@@ -254,7 +219,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     public static String getServiceName() {
-        String serviceName = "";
+        String serviceName;
         do {
             System.out.println("Nhâp tên dịch vụ");
             serviceName = scanner.nextLine();
@@ -264,5 +229,141 @@ public class FacilityServiceImpl implements FacilityService {
             System.out.println("Nhập ko hợp lệ");
         } while (true);
         return serviceName;
+    }
+
+    public static double getArea() {
+        do {
+            System.out.println("Nhập diện tích sử dụng");
+            String area = scanner.nextLine();
+            double result = UserException.numberFormatExceptionDouble(area);
+            if (result <= 30) {
+                System.out.println("diện tích phải lớn hơn 30");
+            } else {
+                return result;
+            }
+        } while (true);
+    }
+
+    public static double getTaxCosts() {
+        do {
+            System.out.println("Nhập chi phí thuế");
+            String taxCosts = scanner.nextLine();
+            double result = UserException.numberFormatExceptionDouble(taxCosts);
+            if (result <= 0) {
+                System.out.println("chi phí thuế phải lớn hơn 30");
+            } else {
+                return result;
+            }
+        } while (true);
+    }
+
+    public static int getMaxPerson() {
+        do {
+            System.out.println("Nhập số người tối đa");
+            String maxPerson = scanner.nextLine();
+            int result = UserException.numberFormatExceptionInteger(maxPerson);
+            if (result <= 0 || result > 19) {
+                System.out.println("số người tối đa phải lớn hơn 0 và bé hơn 20");
+            } else {
+                return result;
+            }
+        } while (true);
+    }
+
+    public static String getRoomStandard() {
+        do {
+            System.out.println("Nhập tiêu chuẩn phòng");
+            String roomStandard = scanner.nextLine();
+            if (Regex.regexServiceName(roomStandard)) {
+                return roomStandard;
+            } else {
+                System.out.println("không đúng định dạng");
+            }
+        } while (true);
+    }
+
+    public static String getIdFacility(Object a) {
+        String idFacility;
+        if (a instanceof House) {
+            readHouseFile();
+            do {
+                try {
+                    System.out.println("Nhập mã dịch vụ");
+                    idFacility = scanner.nextLine();
+                    boolean flag = true;
+                    if (Regex.regexHouseId(idFacility)) {
+                        Set<House> houseSet = houseList.keySet();
+                        for (House house : houseSet) {
+                            if (house.getId().equals(idFacility)) {
+                                System.out.println("id đã tồn tại");
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) {
+                            return idFacility;
+                        }
+                    } else {
+                        throw new InvalidHouseException("Mã dịch vụ không hợp lệ");
+                    }
+                } catch (InvalidHouseException e) {
+                    System.out.println(e.getMessage());
+                }
+
+            } while (true);
+        } else if (a instanceof Villa) {
+            readVillaFile();
+            do {
+                try {
+                    System.out.println("Nhập mã dịch vụ");
+                    idFacility = scanner.nextLine();
+                    boolean flag = true;
+                    if (Regex.regexVillaId(idFacility)) {
+                        Set<Villa> villaSet = villaList.keySet();
+                        for (Villa villa : villaSet) {
+                            if (villa.getId().equals(idFacility)) {
+                                System.out.println("id đã tồn tại");
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) {
+                            return idFacility;
+                        }
+                    } else {
+                        throw new InvalidIdVillaException("Mã dịch vụ không hợp lệ");
+                    }
+                } catch (InvalidIdVillaException e) {
+                    System.out.println(e.getMessage());
+                }
+
+            } while (true);
+        } else {
+            readRoomFile();
+            do {
+                try {
+                    System.out.println("Nhập mã dịch vụ");
+                    idFacility = scanner.nextLine();
+                    boolean flag = true;
+                    if (Regex.regexRoomId(idFacility)) {
+                        Set<Room> roomSet = roomList.keySet();
+                        for (Room room : roomSet) {
+                            if (room.getId().equals(idFacility)) {
+                                System.out.println("id đã tồn tại");
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) {
+                            return idFacility;
+                        }
+                    } else {
+                        throw new InvalidRoomException("Mã dịch vụ không hợp lệ");
+                    }
+                } catch (InvalidRoomException e) {
+                    System.out.println(e.getMessage());
+                }
+            } while (true);
+        }
     }
 }

@@ -18,7 +18,7 @@ public class BookingServiceImpl implements BookingService {
         String customerId = chooseCustomer().getId();
         Facility facility = chooseFacility();
         String facilityId = facility.getId();
-        String bookingId = ""+findID();
+        String bookingId = "" + findID();
         System.out.println("Nhập ngày bắt đầu ");
         String startDay = scanner.nextLine();
         System.out.println("Nhập ngày kết thúc");
@@ -36,14 +36,15 @@ public class BookingServiceImpl implements BookingService {
                     + item.getEndDay() + ","
                     + item.getCustomerId() + ","
                     + item.getFacilityId();
-            ReadAndWriteFile.writeFile(BOOKING_PATH,line);
+            ReadAndWriteFile.writeFile(BOOKING_PATH, line);
         }
     }
+
     public static void readBooking() {
-        List<String[]> strings= ReadAndWriteFile.readFile(BOOKING_PATH);
+        List<String[]> strings = ReadAndWriteFile.readFile(BOOKING_PATH);
         bookingSet.clear();
-        for (String[] item: strings) {
-            bookingSet.add(new Booking(item[0],item[1],item[2],item[3],item[4]));
+        for (String[] item : strings) {
+            bookingSet.add(new Booking(item[0], item[1], item[2], item[3], item[4]));
         }
     }
 
@@ -59,30 +60,24 @@ public class BookingServiceImpl implements BookingService {
         System.out.println("Danh sách khách hàng");
         new CustomerServiceImpl().display();
         System.out.println("Nhập id khách hàng");
-        boolean check = true;
         String id = scanner.nextLine();
-        while (check) {
+        while (true) {
             for (Customer item : CustomerServiceImpl.customerList) {
                 if (item.getId().equals(id)) {
-                    check = false;
                     return item;
                 }
             }
-            if (check) {
-                System.out.println("Bạn đã nhập sai hãy nhập lại");
-                id = scanner.nextLine();
-            }
+            System.out.println("Bạn đã nhập sai hãy nhập lại");
+            id = scanner.nextLine();
         }
-        return null;
     }
 
     public static Facility chooseFacility() {
         System.out.println("Danh sach dich vu");
         new FacilityServiceImpl().display();
         System.out.println("Nhập id dịch vụ");
-        boolean check = true;
         String id = (scanner.nextLine());
-        while (check) {
+        while (true) {
             Set<House> houseSet = FacilityServiceImpl.houseList.keySet();
             for (House item : houseSet) {
                 if (item.getId().equals(id)) {
@@ -101,61 +96,58 @@ public class BookingServiceImpl implements BookingService {
                     return item;
                 }
             }
-            if (check) {
-                System.out.println("Bạn đã nhập sai hãy nhập lại");
-                id = (scanner.nextLine());
-            }
+            System.out.println("Bạn đã nhập sai hãy nhập lại");
+            id = (scanner.nextLine());
         }
-        return null;
     }
+
     public static void setValueBooking(Object obj) {
         if (obj instanceof Villa) {
             FacilityServiceImpl.readVillaFile();
             Set<Villa> villaSet = FacilityServiceImpl.villaList.keySet();
-            for (Villa item: villaSet) {
+            for (Villa item : villaSet) {
                 if (((Villa) obj).getId().equals(item.getId())) {
                     int value = FacilityServiceImpl.villaList.get(item);
                     FacilityServiceImpl.villaList.remove(item);
-                    FacilityServiceImpl.villaList.put(item,value+1);
+                    FacilityServiceImpl.villaList.put(item, value + 1);
                     FacilityServiceImpl.writeVillaFile();
                     return;
                 }
             }
-        }
-        else if (obj instanceof House) {
+        } else if (obj instanceof House) {
             FacilityServiceImpl.readHouseFile();
             Set<House> houseSet = FacilityServiceImpl.houseList.keySet();
-            for (House item: houseSet) {
+            for (House item : houseSet) {
                 if (((House) obj).getId().equals(item.getId())) {
                     int value = FacilityServiceImpl.houseList.get(item);
                     FacilityServiceImpl.houseList.remove(item);
-                    FacilityServiceImpl.houseList.put(item,value+1);
+                    FacilityServiceImpl.houseList.put(item, value + 1);
                     FacilityServiceImpl.writeHouseFile();
                     return;
                 }
             }
-        }
-        else  {
+        } else {
             FacilityServiceImpl.readRoomFile();
             Set<Room> roomSet = FacilityServiceImpl.roomList.keySet();
-            for (Room item: roomSet) {
+            for (Room item : roomSet) {
                 if (((Room) obj).getId().equals(item.getId())) {
                     int value = FacilityServiceImpl.roomList.get(item);
                     FacilityServiceImpl.roomList.remove(item);
-                    FacilityServiceImpl.roomList.put(item,value+1);
+                    FacilityServiceImpl.roomList.put(item, value + 1);
                     FacilityServiceImpl.writeRoomFile();
                     return;
                 }
             }
         }
     }
+
     public int findID() {
         int id = 0;
-        for (Booking booking: bookingSet) {
-            if (id<Integer.parseInt(booking.getBookingId())) {
-                id=Integer.parseInt(booking.getBookingId());
+        for (Booking booking : bookingSet) {
+            if (id < Integer.parseInt(booking.getBookingId())) {
+                id = Integer.parseInt(booking.getBookingId());
             }
         }
-        return id+1;
+        return id + 1;
     }
 }

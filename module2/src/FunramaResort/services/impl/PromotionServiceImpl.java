@@ -48,10 +48,10 @@ public class PromotionServiceImpl implements PromotionService {
         int voucher20 = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập số lượng voucher 50%");
         int voucher50 = Integer.parseInt(scanner.nextLine());
-        int sumVoucher= voucher10+voucher20+voucher50;
-        for (Booking booking: BookingServiceImpl.bookingSet) {
-            if (GetTime.getMonthBooking(booking.getStartDay()).equals(GetTime.getMonthDateTime())&&sumVoucher!=0){
-                for (Customer customer: CustomerServiceImpl.customerList) {
+        int sumVoucher = voucher10 + voucher20 + voucher50;
+        for (Booking booking : BookingServiceImpl.bookingSet) {
+            if (GetTime.getMonthBooking(booking.getStartDay()).equals(GetTime.getMonthDateTime()) && sumVoucher != 0) {
+                for (Customer customer : CustomerServiceImpl.customerList) {
                     if (booking.getCustomerId().equals(customer.getId())) {
                         customerStack.add(customer);
                         sumVoucher--;
@@ -60,15 +60,15 @@ public class PromotionServiceImpl implements PromotionService {
                 }
             }
         }
-        for (Customer customer: customerStack) {
-            if (voucher10>0) {
-                System.out.println(customer +" bạn đã trúng vorcher 10%");
+        for (Customer customer : customerStack) {
+            if (voucher10 > 0) {
+                System.out.println(customer + " bạn đã trúng vorcher 10%");
                 voucher10--;
-            }else if (voucher20>0) {
-                System.out.println(customer +" bạn đã trúng vorcher 20%");
+            } else if (voucher20 > 0) {
+                System.out.println(customer + " bạn đã trúng vorcher 20%");
                 voucher20--;
-            }else {
-                System.out.println(customer +" bạn đã trúng vorcher 50%");
+            } else {
+                System.out.println(customer + " bạn đã trúng vorcher 50%");
             }
         }
     }

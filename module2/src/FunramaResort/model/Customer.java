@@ -1,6 +1,6 @@
 package FunramaResort.model;
 
-public class Customer extends Person{
+public class Customer extends Person {
     private String customerLevel;
     private String address;
 
@@ -12,8 +12,8 @@ public class Customer extends Person{
         this.address = address;
     }
 
-    public Customer(String id,String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email, String customerLevel, String address) {
-        super(id,name, dateOfBirth, gender, citizenIdentification, phoneNumber, email);
+    public Customer(String id, String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email, String customerLevel, String address) {
+        super(id, name, dateOfBirth, gender, citizenIdentification, phoneNumber, email);
         this.customerLevel = customerLevel;
         this.address = address;
     }

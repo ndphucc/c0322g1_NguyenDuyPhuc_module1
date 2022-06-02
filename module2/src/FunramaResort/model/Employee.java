@@ -1,6 +1,6 @@
 package FunramaResort.model;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private String level;
     private String position;
     private double salary;
@@ -14,8 +14,8 @@ public class Employee extends Person{
         this.salary = salary;
     }
 
-    public Employee(String id,String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email, String level, String position, double salary) {
-        super(id,name, dateOfBirth, gender, citizenIdentification, phoneNumber, email);
+    public Employee(String id, String name, String dateOfBirth, String gender, String citizenIdentification, String phoneNumber, String email, String level, String position, double salary) {
+        super(id, name, dateOfBirth, gender, citizenIdentification, phoneNumber, email);
         this.level = level;
         this.position = position;
         this.salary = salary;

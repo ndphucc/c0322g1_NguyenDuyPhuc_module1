@@ -10,12 +10,12 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(String bookingId, String startDay, String endDay, String customerId,String facilityId) {
+    public Booking(String bookingId, String startDay, String endDay, String customerId, String facilityId) {
         this.bookingId = bookingId;
         this.startDay = startDay;
         this.endDay = endDay;
         this.customerId = customerId;
-        this.facilityId= facilityId;
+        this.facilityId = facilityId;
     }
 
     public String getFacilityId() {
