@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void addNew() {
         System.out.println("Nhập tên");
         String name = scanner.nextLine();
-        String id = "" + Integer.parseInt(customerList.get(customerList.size() - 1).getId()) + 1;
+        String id = "" + (Integer.parseInt(customerList.get(customerList.size() - 1).getId()) + 1);
         String dateOfBirth = GetTime.getDateOfBirth();
         System.out.println("Nhập giới tính");
         String gender = scanner.nextLine();

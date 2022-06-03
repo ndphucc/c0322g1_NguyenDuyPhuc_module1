@@ -17,6 +17,7 @@ public class PromotionServiceImpl implements PromotionService {
     @Override
     public void displayCustomer() {
         System.out.println("Nhập năm bạn muốn hiển thị");
+        CustomerServiceImpl.readFile();
         String year = scanner.nextLine();
         BookingServiceImpl.readBooking();
         FacilityServiceImpl.readVillaFile();
@@ -25,13 +26,23 @@ public class PromotionServiceImpl implements PromotionService {
             Set<Villa> villaSet = FacilityServiceImpl.villaList.keySet();
             for (Villa villa : villaSet) {
                 if (item.getFacilityId().equals(villa.getId()) && GetTime.getYearBooking(item.getStartDay()).equals(year) && villa.getRentalType().equals("Năm")) {
-                    System.out.println(item);
+                    for (Customer customer:CustomerServiceImpl.customerList) {
+                        if (item.getCustomerId().equals(customer.getId())){
+                            System.out.println(customer);
+                            break;
+                        }
+                    }
                 }
             }
             Set<House> houseSet = FacilityServiceImpl.houseList.keySet();
             for (House house : houseSet) {
                 if (item.getFacilityId().equals(house.getId()) && GetTime.getYearBooking(item.getStartDay()).equals(year) && house.getRentalType().equals("Năm")) {
-                    System.out.println(item);
+                    for (Customer customer:CustomerServiceImpl.customerList) {
+                        if (item.getCustomerId().equals(customer.getId())){
+                            System.out.println(customer);
+                            break;
+                        }
+                    }
                 }
             }
         }

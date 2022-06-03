@@ -30,7 +30,7 @@ public class FacilityServiceImpl implements FacilityService {
         readRoomFile();
         Set<House> houseSet = houseList.keySet();
         for (House item : houseSet) {
-            System.out.println(item);
+            System.out.println(item+" số lần sử dụng: "+houseList.get(item));
         }
         Set<Villa> villaSet = villaList.keySet();
         for (Villa item : villaSet) {
