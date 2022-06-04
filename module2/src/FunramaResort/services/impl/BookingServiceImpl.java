@@ -13,22 +13,30 @@ public class BookingServiceImpl implements BookingService {
     static final String BOOKING_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\booking.csv";
 
     @Override
-    public void addBooking() {
-        readBooking();
+    public void add() {
+        read();
+
         String customerId = chooseCustomer().getId();
+
         Facility facility = chooseFacility();
+
         String facilityId = facility.getId();
+
         String bookingId = "" + findID();
+
         System.out.println("Nhập ngày bắt đầu ");
         String startDay = scanner.nextLine();
+
         System.out.println("Nhập ngày kết thúc");
         String endDay = scanner.nextLine();
+
         bookingSet.add(new Booking(bookingId, startDay, endDay, customerId, facilityId));
         setValueBooking(facility);
-        writeBooking();
+        System.out.println("Bạn đã thêm thành công");
+        write();
     }
 
-    public static void writeBooking() {
+    public static void write() {
         ReadAndWriteFile.clearFile(BOOKING_PATH);
         for (Booking item : bookingSet) {
             String line = item.getBookingId() + ","
@@ -40,7 +48,7 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
-    public static void readBooking() {
+    public static void read() {
         List<String[]> strings = ReadAndWriteFile.readFile(BOOKING_PATH);
         bookingSet.clear();
         for (String[] item : strings) {
@@ -49,8 +57,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void displayListBooking() {
-        readBooking();
+    public void display() {
+        read();
         for (Booking item : bookingSet) {
             System.out.println(item);
         }
@@ -59,8 +67,10 @@ public class BookingServiceImpl implements BookingService {
     public static Customer chooseCustomer() {
         System.out.println("Danh sách khách hàng");
         new CustomerServiceImpl().display();
+
         System.out.println("Nhập id khách hàng");
         String id = scanner.nextLine();
+
         while (true) {
             for (Customer item : CustomerServiceImpl.customerList) {
                 if (item.getId().equals(id)) {
@@ -75,8 +85,10 @@ public class BookingServiceImpl implements BookingService {
     public static Facility chooseFacility() {
         System.out.println("Danh sach dich vu");
         new FacilityServiceImpl().display();
+
         System.out.println("Nhập id dịch vụ");
         String id = (scanner.nextLine());
+
         while (true) {
             Set<House> houseSet = FacilityServiceImpl.houseList.keySet();
             for (House item : houseSet) {

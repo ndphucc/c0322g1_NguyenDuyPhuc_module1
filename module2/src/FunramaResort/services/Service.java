@@ -3,7 +3,7 @@ package FunramaResort.services;
 public interface Service {
     void display();
 
-    void addNew();
+    void add();
 
     void edit();
 

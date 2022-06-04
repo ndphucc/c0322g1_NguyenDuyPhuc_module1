@@ -17,7 +17,7 @@ public class ContactServiceImpl implements ContactService {
     static final String CONTACT_PATH = "D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\FunramaResort\\data\\contract.csv";
 
     static {
-        BookingServiceImpl.readBooking();
+        BookingServiceImpl.read();
         for (Booking item : BookingServiceImpl.bookingSet) {
             bookingContractQueue.add(item);
             BookingServiceImpl.bookingSet.remove(item);
@@ -26,7 +26,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void display() {
-        readContactFile();
+        readFile();
         for (Booking item : bookingContractQueue
         ) {
             System.out.println(item);
@@ -34,22 +34,28 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void addNew() {
-        readContactFile();
+    public void add() {
+        readFile();
+
         System.out.println("Mã booking = " + bookingContractQueue.peek().getBookingId());
+
         System.out.println("Mã khách hàng = " + bookingContractQueue.peek().getCustomerId());
+
         System.out.println("Nhập mã hợp đồng thuê");
         String id = scanner.nextLine();
+
         System.out.println("Nhập tổng số tiền cọc trước ");
         Double deposit = Double.parseDouble(scanner.nextLine());
+
         System.out.println("Nhập tổng số tiền thanh toán ");
         double totalMoneyPayable = Double.parseDouble(scanner.nextLine());
+
         contractLinkedList.add(new Contract(id, bookingContractQueue.peek().getBookingId(), deposit, totalMoneyPayable, bookingContractQueue.poll().getCustomerId()));
         System.out.println("Bạn đã thêm thành công");
-        writeContactFile();
+        writeFile();
     }
 
-    public static void writeContactFile() {
+    public static void writeFile() {
         for (Contract item : contractLinkedList) {
             String line = item.getContractId() + ","
                     + item.getBookingId() + ","
@@ -62,9 +68,11 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void edit() {
-        readContactFile();
+        readFile();
+
         System.out.println("Nhập id bạn muốn sửa");
         String id = scanner.nextLine();
+
         boolean flag = true;
         do {
             for (Contract item : contractLinkedList) {
@@ -72,18 +80,26 @@ public class ContactServiceImpl implements ContactService {
                     flag = false;
                     System.out.println("Nhập mã booking");
                     String bookingId = scanner.nextLine();
+
                     System.out.println("Nhập mã khách hàng");
                     String customerId = scanner.nextLine();
+
                     System.out.println("Nhập tổng số tiền cọc trước ");
                     Double deposit = Double.parseDouble(scanner.nextLine());
+
                     System.out.println("Nhập tổng số tiền thanh toán ");
                     double totalMoneyPayable = Double.parseDouble(scanner.nextLine());
+
                     item.setBookingId(bookingId);
+
                     item.setCustomerId(customerId);
+
                     item.setDeposit(deposit);
+
                     item.setTotalMoneyPayable(totalMoneyPayable);
+
                     System.out.println("Đã sữa thành công");
-                    writeContactFile();
+                    writeFile();
                 }
             }
             if (flag) {
@@ -93,7 +109,7 @@ public class ContactServiceImpl implements ContactService {
         } while (flag);
     }
 
-    public static void readContactFile() {
+    public static void readFile() {
         List<String[]> strings = ReadAndWriteFile.readFile(CONTACT_PATH);
         for (String[] item : strings) {
             if (item.length == 9)

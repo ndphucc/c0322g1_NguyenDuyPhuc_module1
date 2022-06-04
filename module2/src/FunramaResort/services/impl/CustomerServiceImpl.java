@@ -2,7 +2,7 @@ package FunramaResort.services.impl;
 
 import FunramaResort.model.Customer;
 import FunramaResort.services.CustomerService;
-import FunramaResort.utils.GetTime;
+import FunramaResort.utils.GetUntils;
 import FunramaResort.utils.ReadAndWriteFile;
 
 import java.util.LinkedList;
@@ -24,7 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
-    public String getCustomerLevel() {
+    public String getLevel() {
         System.out.println("Hãy chọn loại khách hàng");
         System.out.println("1.Diamond");
         System.out.println("2.Platinum");
@@ -45,30 +45,39 @@ public class CustomerServiceImpl implements CustomerService {
                 return "Member";
             default:
                 System.out.println("Lựa chọn không hợp lệ");
-                getCustomerLevel();
+                getLevel();
 
         }
         return "";
     }
 
     @Override
-    public void addNew() {
+    public void add() {
+        readFile();
+
         System.out.println("Nhập tên");
         String name = scanner.nextLine();
+
         String id = "" + (Integer.parseInt(customerList.get(customerList.size() - 1).getId()) + 1);
-        String dateOfBirth = GetTime.getDateOfBirth();
-        System.out.println("Nhập giới tính");
-        String gender = scanner.nextLine();
+
+        String dateOfBirth = GetUntils.getDateOfBirth();
+
+        String gender = GetUntils.getGender();
+
         System.out.println("Nhập số cccd");
         String citizenldentification = scanner.nextLine();
+
         System.out.println("Nhập sdt");
         String phoneNumber = scanner.nextLine();
+
         System.out.println("Nhập email");
         String email = scanner.nextLine();
-        String customerLevel = getCustomerLevel();
+
+        String customerLevel = getLevel();
+
         System.out.println("Nhập địa chỉ");
         String address = scanner.nextLine();
-        readFile();
+
         customerList.add(new Customer(id, name, dateOfBirth, gender, citizenldentification, phoneNumber, email, customerLevel, address));
         writeFile();
     }
@@ -76,32 +85,50 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void edit() {
         readFile();
+
         System.out.println("Chọn id bạn muốn sửa");
         String id = (scanner.nextLine());
+
         for (Customer item : customerList) {
             if (item.getId().equals(id)) {
+
                 System.out.println("Nhập tên");
                 String name = scanner.nextLine();
-                String dateOfBirth = GetTime.getDateOfBirth();
-                System.out.println("Nhập giới tính");
-                String gender = scanner.nextLine();
+
+                String dateOfBirth = GetUntils.getDateOfBirth();
+
+                String gender = GetUntils.getGender();
+
                 System.out.println("Nhập số cccd");
                 String citizenldentification = scanner.nextLine();
+
                 System.out.println("Nhập sdt");
                 String phoneNumber = scanner.nextLine();
+
                 System.out.println("Nhập email");
                 String email = scanner.nextLine();
-                String customerLevel = getCustomerLevel();
+
+                String customerLevel = getLevel();
+
                 System.out.println("Nhập địa chỉ");
                 String address = scanner.nextLine();
+
                 item.setName(name);
+
                 item.setDateOfBirth(dateOfBirth);
+
                 item.setGender(gender);
+
                 item.setCitizenIdentification(citizenldentification);
+
                 item.setPhoneNumber(phoneNumber);
+
                 item.setEmail(email);
+
                 item.setCustomerLevel(customerLevel);
+
                 item.setAddress(address);
+
                 writeFile();
                 return;
             }

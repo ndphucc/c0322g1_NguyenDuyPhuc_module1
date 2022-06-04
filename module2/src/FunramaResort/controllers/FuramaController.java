@@ -53,7 +53,7 @@ public class FuramaController {
                     new EmployeeServiceImpl().display();
                     break;
                 case "2":
-                    new EmployeeServiceImpl().addNew();
+                    new EmployeeServiceImpl().add();
                     break;
                 case "3":
                     new EmployeeServiceImpl().edit();
@@ -80,7 +80,7 @@ public class FuramaController {
                     new CustomerServiceImpl().display();
                     break;
                 case "2":
-                    new CustomerServiceImpl().addNew();
+                    new CustomerServiceImpl().add();
                     break;
                 case "3":
                     new CustomerServiceImpl().edit();
@@ -131,13 +131,13 @@ public class FuramaController {
             String choose = scanner.nextLine();
             switch (choose) {
                 case "1":
-                    new BookingServiceImpl().addBooking();
+                    new BookingServiceImpl().add();
                     break;
                 case "2":
-                    new BookingServiceImpl().displayListBooking();
+                    new BookingServiceImpl().display();
                     break;
                 case "3":
-                    new ContactServiceImpl().addNew();
+                    new ContactServiceImpl().add();
                     break;
                 case "4":
                     new ContactServiceImpl().display();

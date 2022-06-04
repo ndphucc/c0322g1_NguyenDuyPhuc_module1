@@ -2,7 +2,7 @@ package FunramaResort.utils;
 
 import java.util.Scanner;
 
-public class GetTime {
+public class GetUntils {
     static Scanner scanner = new Scanner(System.in);
 
     public static String getYearBooking(String starDay) {
@@ -36,6 +36,24 @@ public class GetTime {
                 System.out.println("Nhập sai định dạng");
             }
         } while (true);
+    }
+
+    public static String getGender() {
+        do {
+            System.out.println("Chọn giới tính");
+            System.out.println("1.Nam");
+            System.out.println("2.Nữ");
+            String choose = scanner.nextLine();
+            switch (choose) {
+                case "1":
+                    return "Nam";
+                case "2":
+                    return "Nữ";
+                default:
+                    System.out.println("Vui lòng chọn 1 hoặc 2");
+            }
+        } while (true);
+
     }
 
 }

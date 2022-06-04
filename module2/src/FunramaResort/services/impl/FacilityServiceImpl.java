@@ -1,8 +1,6 @@
 package FunramaResort.services.impl;
 
-import FunramaResort.exception.InvalidHouseException;
-import FunramaResort.exception.InvalidIdVillaException;
-import FunramaResort.exception.InvalidRoomException;
+import FunramaResort.exception.*;
 import FunramaResort.libs.UserException;
 import FunramaResort.model.House;
 import FunramaResort.model.Room;
@@ -29,13 +27,16 @@ public class FacilityServiceImpl implements FacilityService {
         readHouseFile();
         readRoomFile();
         Set<House> houseSet = houseList.keySet();
+
         for (House item : houseSet) {
-            System.out.println(item+" số lần sử dụng: "+houseList.get(item));
+            System.out.println(item + " số lần sử dụng: " + houseList.get(item));
         }
+
         Set<Villa> villaSet = villaList.keySet();
         for (Villa item : villaSet) {
             System.out.println(item);
         }
+
         Set<Room> roomSet = roomList.keySet();
         for (Room item : roomSet) {
             System.out.println(item);
@@ -48,17 +49,20 @@ public class FacilityServiceImpl implements FacilityService {
         readRoomFile();
         readVillaFile();
         Set<House> houseSet = houseList.keySet();
+
         for (House item : houseSet) {
             if (houseList.get(item) >= 5) {
                 System.out.println(item);
             }
         }
+
         Set<Villa> villaSet = villaList.keySet();
         for (Villa item : villaSet) {
             if (villaList.get(item) >= 5) {
                 System.out.println(item);
             }
         }
+
         Set<Room> roomSet = roomList.keySet();
         for (Room item : roomSet) {
             if (roomList.get(item) >= 5) {
@@ -70,17 +74,27 @@ public class FacilityServiceImpl implements FacilityService {
     @Override
     public void addNewVilla() {
         readVillaFile();
-        String idFacility=getIdFacility(new Villa());
+
+        String idFacility = getIdFacility(new Villa());
+
         String serviceName = getServiceName();
+
         double usableArea = getArea();
+
         double taxCosts = getTaxCosts();
+
         int maxPerson = getMaxPerson();
+
         String rentalType = getRentalType();
+
         String roomStandard = getRoomStandard();
+
         System.out.println("Nhập diện tích hồ bơi");
         double poolArea = Double.parseDouble(scanner.nextLine());
+
         System.out.println("Nhập số tầng");
         int floorNumbers = Integer.parseInt(scanner.nextLine());
+
         villaList.put(new Villa(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, roomStandard, poolArea, floorNumbers), 0);
         writeVillaFile();
     }
@@ -166,15 +180,24 @@ public class FacilityServiceImpl implements FacilityService {
     @Override
     public void addNewHouse() {
         readHouseFile();
+
         String idFacility = getIdFacility(new House());
+
         String serviceName = getServiceName();
+
         double usableArea = getArea();
+
         double taxCosts = getTaxCosts();
+
         int maxPerson = getMaxPerson();
+
         String rentalType = getRentalType();
+
         String roomStandard = getRoomStandard();
+
         System.out.println("Nhập số tầng");
         int floorNumbers = Integer.parseInt(scanner.nextLine());
+
         houseList.put(new House(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, roomStandard, floorNumbers), 0);
         writeHouseFile();
     }
@@ -182,14 +205,22 @@ public class FacilityServiceImpl implements FacilityService {
     @Override
     public void addNewRoom() {
         readRoomFile();
-        String idFacility= getIdFacility(new Room());
+
+        String idFacility = getIdFacility(new Room());
+
         String serviceName = getServiceName();
+
         double usableArea = getArea();
+
         double taxCosts = getTaxCosts();
+
         int maxPerson = getMaxPerson();
+
         String rentalType = getRentalType();
+
         System.out.println("Nhập dịch vụ miễn phí");
         String freeService = scanner.nextLine();
+
         roomList.put(new Room(idFacility, serviceName, usableArea, taxCosts, maxPerson, rentalType, freeService), 0);
         writeRoomFile();
     }
@@ -221,63 +252,84 @@ public class FacilityServiceImpl implements FacilityService {
     public static String getServiceName() {
         String serviceName;
         do {
-            System.out.println("Nhâp tên dịch vụ");
-            serviceName = scanner.nextLine();
-            if (Regex.regexServiceName(serviceName)) {
-                break;
+            try {
+                System.out.println("Nhâp tên dịch vụ");
+                serviceName = scanner.nextLine();
+                if (Regex.regexServiceName(serviceName)) {
+                    return serviceName;
+                }
+                throw new InvalidServiceNameException("Tên phải bắt đầu bằng chữ hoa");
+            } catch (InvalidServiceNameException e) {
+                System.out.println(e.getMessage());
             }
-            System.out.println("Nhập ko hợp lệ");
+
         } while (true);
-        return serviceName;
     }
 
     public static double getArea() {
         do {
-            System.out.println("Nhập diện tích sử dụng");
-            String area = scanner.nextLine();
-            double result = UserException.numberFormatExceptionDouble(area);
-            if (result <= 30) {
-                System.out.println("diện tích phải lớn hơn 30");
-            } else {
-                return result;
+            try {
+                System.out.println("Nhập diện tích sử dụng");
+                String area = scanner.nextLine();
+                double result = UserException.parseDouble(area);
+                if (result <= 30) {
+                    throw new InvalidAreaException("diện tích phải lớn hơn 30");
+                } else {
+                    return result;
+                }
+            } catch (InvalidAreaException e) {
+                System.out.println(e.getMessage());
             }
+
         } while (true);
     }
 
     public static double getTaxCosts() {
         do {
-            System.out.println("Nhập chi phí thuế");
-            String taxCosts = scanner.nextLine();
-            double result = UserException.numberFormatExceptionDouble(taxCosts);
-            if (result <= 0) {
-                System.out.println("chi phí thuế phải lớn hơn 30");
-            } else {
-                return result;
+            try {
+                System.out.println("Nhập chi phí thuế");
+                String taxCosts = scanner.nextLine();
+                double result = UserException.parseDouble(taxCosts);
+                if (result <= 0) {
+                    throw new InvalidTaxCostsException("chi phí thuế phải lớn hơn 30");
+                } else {
+                    return result;
+                }
+            } catch (InvalidTaxCostsException e) {
+                System.out.println(e.getMessage());
             }
         } while (true);
     }
 
     public static int getMaxPerson() {
         do {
-            System.out.println("Nhập số người tối đa");
-            String maxPerson = scanner.nextLine();
-            int result = UserException.numberFormatExceptionInteger(maxPerson);
-            if (result <= 0 || result > 19) {
-                System.out.println("số người tối đa phải lớn hơn 0 và bé hơn 20");
-            } else {
-                return result;
+            try {
+                System.out.println("Nhập số người tối đa");
+                String maxPerson = scanner.nextLine();
+                int result = UserException.parseInteger(maxPerson);
+                if (result <= 0 || result > 19) {
+                    throw new InvalidMaxPersonException("số người tối đa phải lớn hơn 0 và bé hơn 20");
+                } else {
+                    return result;
+                }
+            } catch (InvalidMaxPersonException e) {
+                System.out.println(e.getMessage());
             }
         } while (true);
     }
 
     public static String getRoomStandard() {
         do {
-            System.out.println("Nhập tiêu chuẩn phòng");
-            String roomStandard = scanner.nextLine();
-            if (Regex.regexServiceName(roomStandard)) {
-                return roomStandard;
-            } else {
-                System.out.println("không đúng định dạng");
+            try {
+                System.out.println("Nhập tiêu chuẩn phòng");
+                String roomStandard = scanner.nextLine();
+                if (Regex.regexServiceName(roomStandard)) {
+                    return roomStandard;
+                } else {
+                    throw new InvalidRoomStandardException("Chữ cái đầu phải là chữ hoa");
+                }
+            } catch (InvalidRoomStandardException e) {
+                System.out.println(e.getMessage());
             }
         } while (true);
     }

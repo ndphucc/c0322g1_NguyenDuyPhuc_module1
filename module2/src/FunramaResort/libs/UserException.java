@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class UserException {
     static Scanner scanner = new Scanner(System.in);
 
-    public static double numberFormatExceptionDouble(String str) {
+    public static double parseDouble(String str) {
         double result = 0;
         boolean flag = true;
         do {
@@ -20,7 +20,7 @@ public class UserException {
         return result;
     }
 
-    public static int numberFormatExceptionInteger(String str) {
+    public static int parseInteger(String str) {
         int result = 0;
         boolean flag = true;
         do {

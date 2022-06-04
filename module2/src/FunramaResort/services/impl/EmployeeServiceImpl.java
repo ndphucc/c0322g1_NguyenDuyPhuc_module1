@@ -3,7 +3,7 @@ package FunramaResort.services.impl;
 import FunramaResort.libs.UserException;
 import FunramaResort.model.Employee;
 import FunramaResort.services.EmployeeService;
-import FunramaResort.utils.GetTime;
+import FunramaResort.utils.GetUntils;
 import FunramaResort.utils.ReadAndWriteFile;
 
 import java.util.ArrayList;
@@ -52,25 +52,36 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void addNew() {
+    public void add() {
         readFile();
+
         System.out.println("Nhập tên");
         String name = sc.nextLine();
+
         String id = "" + (Integer.parseInt(employeeList.get(employeeList.size() - 1).getId()) + 1);
-        String dateOfBirth = GetTime.getDateOfBirth();
-        System.out.println("Nhập giới tính");
-        String gender = sc.nextLine();
+
+        String dateOfBirth = GetUntils.getDateOfBirth();
+
+        String gender = GetUntils.getGender();
+
         System.out.println("Nhập số cccd");
         String citizenldentification = sc.nextLine();
+
         System.out.println("Nhập sdt");
         String phoneNumber = sc.nextLine();
+
         System.out.println("Nhập email");
         String email = sc.nextLine();
+
         String position = getPosition();
+
         String level = getLevel();
+
         System.out.println("Nhập lương");
         String temp = sc.nextLine();
-        double salary = UserException.numberFormatExceptionDouble(temp);
+
+        double salary = UserException.parseDouble(temp);
+
         employeeList.add(new Employee(id, name, dateOfBirth, gender, citizenldentification, phoneNumber, email, position, level, salary));
         writeFile();
     }
@@ -131,34 +142,54 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void edit() {
         readFile();
+
         System.out.println("Chọn id bạn muốn sửa");
         String id = (sc.nextLine());
+
         for (Employee item : employeeList) {
             if (item.getId().equals(id)) {
+
                 System.out.println("Nhập tên");
                 String name = sc.nextLine();
-                String dateOfBirth = GetTime.getDateOfBirth();
-                System.out.println("Nhập giới tính");
-                String gender = sc.nextLine();
+
+                String dateOfBirth = GetUntils.getDateOfBirth();
+
+                String gender = GetUntils.getGender();
+
                 System.out.println("Nhập số cccd");
                 String citizenldentification = sc.nextLine();
+
                 System.out.println("Nhập sdt");
                 String phoneNumber = sc.nextLine();
+
                 System.out.println("Nhập email");
                 String email = sc.nextLine();
+
                 String position = getPosition();
+
                 String level = getLevel();
+
                 System.out.println("Nhập lương");
                 double salary = Double.parseDouble(sc.nextLine());
+
                 item.setName(name);
+
                 item.setDateOfBirth(dateOfBirth);
+
                 item.setGender(gender);
+
                 item.setCitizenIdentification(citizenldentification);
+
                 item.setPhoneNumber(phoneNumber);
+
                 item.setEmail(email);
+
                 item.setPosition(position);
+
                 item.setLevel(level);
+
                 item.setSalary(salary);
+
                 ReadAndWriteFile.clearFile(EMPLOYEE_PATH);
                 writeFile();
                 return;
