@@ -31,7 +31,7 @@ public class QuanLi extends NhanVien {
 
     @Override
     public String toString() {
-        return super.toString()+" QuanLi{" +
+        return super.toString() + " QuanLi{" +
                 "luongCoban=" + luongCoban +
                 ", heSoLuong=" + heSoLuong +
                 '}';
@@ -45,7 +45,7 @@ public class QuanLi extends NhanVien {
                 + super.getNgaySinh() + ","
                 + super.getDiaChi() + ","
                 + this.luongCoban + ","
-                + this.heSoLuong+","
-                +"1";
+                + this.heSoLuong + ","
+                + "1";
     }
 }

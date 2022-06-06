@@ -68,5 +68,6 @@ public abstract class NhanVien {
                 ", diaChi='" + diaChi + '\'' +
                 '}';
     }
+
     public abstract String getInfor();
 }

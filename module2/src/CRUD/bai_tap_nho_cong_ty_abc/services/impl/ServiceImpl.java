@@ -68,7 +68,7 @@ public class ServiceImpl implements Service {
         }
         try {
             throw new NotFoundEmployeeException("Id không tồn tại");
-        }catch (NotFoundEmployeeException e) {
+        } catch (NotFoundEmployeeException e) {
             System.err.println(e.getMessage());
         }
 
@@ -90,15 +90,15 @@ public class ServiceImpl implements Service {
         int id = 1;
         if (nhanVienLinkedList.isEmpty()) {
             return id + "";
-        }else {
+        } else {
             for (NhanVien nhanVien : nhanVienLinkedList) {
                 if (Integer.parseInt(nhanVien.getId()) > id) {
                     id = Integer.parseInt(nhanVien.getId());
                 }
             }
         }
-        id+=1;
-        return id+"";
+        id += 1;
+        return id + "";
     }
 
     public String getMaNhanVien() {
@@ -177,9 +177,9 @@ public class ServiceImpl implements Service {
         List<String[]> strings = ReadAndWriteFile.readFile("src/CRUD/bai_tap_nho_cong_ty_abc/data/nhan_vien.csv");
         for (String[] line : strings) {
             if (line[7].equals("1")) {
-                nhanVienLinkedList.add(new QuanLi(line[0],line[1],line[2],line[3],line[4],Double.parseDouble(line[5]),Double.parseDouble(line[6])));
-            }else {
-                nhanVienLinkedList.add(new SanXuat(line[0],line[1],line[2],line[3],line[4],Double.parseDouble(line[5]),Double.parseDouble(line[6])));
+                nhanVienLinkedList.add(new QuanLi(line[0], line[1], line[2], line[3], line[4], Double.parseDouble(line[5]), Double.parseDouble(line[6])));
+            } else {
+                nhanVienLinkedList.add(new SanXuat(line[0], line[1], line[2], line[3], line[4], Double.parseDouble(line[5]), Double.parseDouble(line[6])));
             }
         }
     }

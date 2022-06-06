@@ -31,7 +31,7 @@ public class SanXuat extends NhanVien {
 
     @Override
     public String toString() {
-        return super.toString()+ "SanXuat{" +
+        return super.toString() + "SanXuat{" +
                 "soSanPham=" + soSanPham +
                 ", giaMoiSanPham=" + giaMoiSanPham +
                 '}';
@@ -44,8 +44,8 @@ public class SanXuat extends NhanVien {
                 + super.getHoTen() + ","
                 + super.getNgaySinh() + ","
                 + super.getDiaChi() + ","
-                + this.soSanPham+ ","
-                + this.giaMoiSanPham+","
-                +"2";
+                + this.soSanPham + ","
+                + this.giaMoiSanPham + ","
+                + "2";
     }
 }
