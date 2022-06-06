@@ -174,7 +174,7 @@ public class ServiceImpl implements Service {
 
     public void readFile() {
         nhanVienLinkedList.clear();
-        List<String[]> strings = ReadAndWriteFile.readFile("D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\CRUD\\bai_tap_nho_cong_ty_abc\\data\\nhan_vien.csv");
+        List<String[]> strings = ReadAndWriteFile.readFile("src/CRUD/bai_tap_nho_cong_ty_abc/data/nhan_vien.csv");
         for (String[] line : strings) {
             if (line[7].equals("1")) {
                 nhanVienLinkedList.add(new QuanLi(line[0],line[1],line[2],line[3],line[4],Double.parseDouble(line[5]),Double.parseDouble(line[6])));
@@ -185,9 +185,9 @@ public class ServiceImpl implements Service {
     }
 
     public void writeFile() {
-        ReadAndWriteFile.clearFile("D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\CRUD\\bai_tap_nho_cong_ty_abc\\data\\nhan_vien.csv");
+        ReadAndWriteFile.clearFile("src/CRUD/bai_tap_nho_cong_ty_abc/data/nhan_vien.csv");
         for (NhanVien nhanVien : nhanVienLinkedList) {
-            ReadAndWriteFile.writeFile("D:\\codegym\\c0322g1_nguyenduyphuc\\module2\\src\\CRUD\\bai_tap_nho_cong_ty_abc\\data\\nhan_vien.csv", nhanVien.getInfor());
+            ReadAndWriteFile.writeFile("src/CRUD/bai_tap_nho_cong_ty_abc/data/nhan_vien.csv", nhanVien.getInfor());
         }
     }
 
