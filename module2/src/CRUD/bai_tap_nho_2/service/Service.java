@@ -4,6 +4,7 @@ public interface Service {
     void add();
     void display();
     void remove();
-    void sort();
+    void sortName();
     void edit();
+    void sortDateOfBirth();
 }

@@ -4,7 +4,10 @@ import CRUD.bai_tap_nho_2.model.Teacher;
 import CRUD.bai_tap_nho_2.service.TeacherService;
 import CRUD.bai_tap_nho_2.util.GetProperties;
 import CRUD.bai_tap_nho_2.util.ReadAndWriteFile;
+import CRUD.bai_tap_nho_cong_ty_abc.util.ComparatorDateOfBirth;
+import CRUD.bai_tap_nho_cong_ty_abc.util.ComparatorName;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +21,7 @@ public class TeacherServiceImpl implements TeacherService {
     public void add() {
         readFile();
         teacherList.add(new Teacher(GetProperties.getId(), GetProperties.getName(), GetProperties.getGender(), GetProperties.getDateOfBirth(), GetProperties.getAddress(), GetProperties.getSalary(), GetProperties.getTimeNumber()));
+        System.out.println("Đã thêm thành công");
         writeFile();
     }
 
@@ -61,9 +65,13 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void sort() {
-
+    public void sortName() {
+        readFile();
+        Collections.sort(teacherList, new ComparatorName());
+        writeFile();
+        System.out.println("Sắp xếp thành công");
     }
+
 
     @Override
     public void edit() {
@@ -85,6 +93,13 @@ public class TeacherServiceImpl implements TeacherService {
             }
             System.out.println("id không tồn tại");
         } while (true);
+    }
+
+    @Override
+    public void sortDateOfBirth() {
+        readFile();
+        Collections.sort(teacherList, new ComparatorDateOfBirth());
+        writeFile();
     }
 
     public void writeFile() {

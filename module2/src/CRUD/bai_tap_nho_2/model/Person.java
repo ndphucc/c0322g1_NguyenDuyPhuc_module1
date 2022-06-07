@@ -68,5 +68,6 @@ public abstract class Person {
                 ", address='" + address + '\'' +
                 '}';
     }
+
     public abstract String getInfor();
 }

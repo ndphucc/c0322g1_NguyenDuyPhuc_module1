@@ -1,6 +1,6 @@
 package CRUD.bai_tap_nho_2.model;
 
-public class Teacher extends Person{
+public class Teacher extends Person {
     private String className;
     private double salary;
     private double timeNumber;
@@ -40,7 +40,7 @@ public class Teacher extends Person{
 
     @Override
     public String toString() {
-        return super.toString()+" Teacher{" +
+        return super.toString() + " Teacher{" +
                 "className='" + className + '\'' +
                 ", salary=" + salary +
                 ", timeNumber=" + timeNumber +
@@ -49,12 +49,12 @@ public class Teacher extends Person{
 
     @Override
     public String getInfor() {
-        return super.getId()+","+
-                super.getName()+","+
-                super.getGender()+","+
-                super.getDateOfBirth()+","+
-                super.getAddress()+","+
-                this.salary+","+
+        return super.getId() + "," +
+                super.getName() + "," +
+                super.getGender() + "," +
+                super.getDateOfBirth() + "," +
+                super.getAddress() + "," +
+                this.salary + "," +
                 this.timeNumber;
     }
 }

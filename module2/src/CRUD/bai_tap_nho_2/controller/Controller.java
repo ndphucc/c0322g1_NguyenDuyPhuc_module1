@@ -114,8 +114,10 @@ public class Controller {
             String choose = scanner.nextLine();
             switch (choose) {
                 case "1":
+                    displaySortStudent();
                     break;
                 case "2":
+                    displaySortTeacher();
                     break;
                 case "3":
                     return;
@@ -137,6 +139,48 @@ public class Controller {
                     break;
                 case "2":
                     teacherService.edit();
+                    break;
+                case "3":
+                    return;
+                default:
+                    System.out.println("lựa chọn không hợp lệ");
+            }
+        } while (true);
+    }
+
+    public static void displaySortStudent() {
+        do {
+            System.out.println("1.Sắp xếp theo tên");
+            System.out.println("2.Sắp xếp theo ngày sinh");
+            System.out.println("3.Thoát");
+            String choose = scanner.nextLine();
+            switch (choose) {
+                case "1":
+                    studentService.sortName();
+                    break;
+                case "2":
+                    teacherService.sortDateOfBirth();
+                    break;
+                case "3":
+                    return;
+                default:
+                    System.out.println("lựa chọn không hợp lệ");
+            }
+        } while (true);
+    }
+
+    public static void displaySortTeacher() {
+        do {
+            System.out.println("1.Sắp xếp theo tên");
+            System.out.println("2.Sắp xếp theo ngày sinh");
+            System.out.println("3.Thoát");
+            String choose = scanner.nextLine();
+            switch (choose) {
+                case "1":
+                    teacherService.sortName();
+                    break;
+                case "2":
+                    teacherService.sortDateOfBirth();
                     break;
                 case "3":
                     return;

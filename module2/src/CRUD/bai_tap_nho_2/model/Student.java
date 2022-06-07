@@ -39,12 +39,12 @@ public class Student extends Person {
 
     @Override
     public String getInfor() {
-        return super.getId()+","+
-                super.getName()+","+
-                super.getGender()+","+
-                super.getDateOfBirth()+","+
-                super.getAddress()+","+
-                this.studentId+","+
+        return super.getId() + "," +
+                super.getName() + "," +
+                super.getGender() + "," +
+                super.getDateOfBirth() + "," +
+                super.getAddress() + "," +
+                this.studentId + "," +
                 this.averagePoint;
     }
 }

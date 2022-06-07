@@ -4,7 +4,10 @@ import CRUD.bai_tap_nho_2.model.Student;
 import CRUD.bai_tap_nho_2.service.StudentService;
 import CRUD.bai_tap_nho_2.util.GetProperties;
 import CRUD.bai_tap_nho_2.util.ReadAndWriteFile;
+import CRUD.bai_tap_nho_cong_ty_abc.util.ComparatorDateOfBirth;
+import CRUD.bai_tap_nho_cong_ty_abc.util.ComparatorName;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +21,7 @@ public class StudentServiceImpl implements StudentService {
     public void add() {
         readFile();
         studentList.add(new Student(GetProperties.getId(), GetProperties.getName(), GetProperties.getGender(), GetProperties.getDateOfBirth(), GetProperties.getAddress(), GetProperties.getStudentId(), GetProperties.getAveragePoint()));
+        System.out.println("Đã thêm thành công");
         writeFile();
     }
 
@@ -61,9 +65,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void sort() {
-
+    public void sortName() {
+        readFile();
+        Collections.sort(studentList, new ComparatorName());
+        writeFile();
     }
+
 
     @Override
     public void edit() {
@@ -85,6 +92,13 @@ public class StudentServiceImpl implements StudentService {
             }
             System.out.println("id không tồn tại");
         } while (true);
+    }
+
+    @Override
+    public void sortDateOfBirth() {
+        readFile();
+        Collections.sort(studentList, new ComparatorDateOfBirth());
+        writeFile();
     }
 
     public void writeFile() {
